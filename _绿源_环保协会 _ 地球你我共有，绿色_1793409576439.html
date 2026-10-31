@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>"绿源"环保协会 | 地球你我共有，绿色你我共享</title>
+<style>
+:root{
+  --deep:#1b5e20;
+  --green:#2e7d32;
+  --mid:#558b2f;
+  --light:#7cb342;
+  --pale:#c5e1a5;
+  --cream:#f7faf5;
+  --text:#2b2b2b;
+  --gray:#6b6b6b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:70px;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",sans-serif;
+  color:var(--text);
+  background:var(--cream);
+  line-height:1.85;
+  font-size:16px;
+}
+
+/* ============ 导航 ============ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(27,94,32,.96);
+  backdrop-filter:blur(8px);
+  box-shadow:0 2px 12px rgba(0,0,0,.12);
+}
+.nav-inner{
+  max-width:1140px;margin:0 auto;padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.nav-logo{
+  color:#fff;font-size:18px;font-weight:700;letter-spacing:1px;
+  display:flex;align-items:center;gap:8px;
+}
+.nav-logo span.dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--pale);box-shadow:0 0 10px var(--pale);
+}
+.nav-links{display:flex;gap:26px;list-style:none;}
+.nav-links a{
+  color:#dcedc8;text-decoration:none;font-size:14.5px;
+  padding:4px 2px;border-bottom:2px solid transparent;
+  transition:.25s;
+}
+.nav-links a:hover{color:#fff;border-bottom-color:var(--pale);}
+.menu-btn{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;}
+
+/* ============ Hero ============ */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(155deg,#0f3d14 0%,#1b5e20 45%,#33691e 100%);
+  color:#fff;
+  padding:100px 20px 60px;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(197,225,165,.16),transparent 45%),
+    radial-gradient(circle at 85% 75%,rgba(124,179,66,.18),transparent 50%);
+}
+.hero-badge{
+  position:relative;
+  display:inline-block;
+  font-size:13px;letter-spacing:3px;
+  border:1px solid rgba(220,237,200,.5);
+  border-radius:30px;padding:6px 20px;
+  color:var(--pale);margin-bottom:28px;
+}
+.hero h1{
+  position:relative;
+  font-size:clamp(38px,7vw,76px);
+  font-weight:800;letter-spacing:4px;
+  line-height:1.2;
+  text-shadow:0 4px 30px rgba(0,0,0,.3);
+}
+.hero h1 .quote{color:var(--pale);}
+.hero-sub{
+  position:relative;
+  margin-top:22px;
+  font-size:clamp(16px,2.4vw,22px);
+  letter-spacing:6px;
+  color:#dcedc8;
+  font-weight:300;
+}
+.hero-divider{
+  position:relative;
+  width:70px;height:2px;background:var(--pale);
+  margin:34px auto;
+}
+.hero-meta{
+  position:relative;
+  display:flex;gap:38px;flex-wrap:wrap;justify-content:center;
+  font-size:14px;color:#c5e1a5;
+}
+.hero-meta div{text-align:center;}
+.hero-meta strong{
+  display:block;font-size:20px;color:#fff;font-weight:600;letter-spacing:1px;
+}
+.scroll-hint{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  color:var(--pale);font-size:13px;letter-spacing:2px;
+  animation:bounce 2s infinite;
+}
+@keyframes bounce{
+  0%,100%{transform:translate(-50%,0);opacity:.6;}
+  50%{transform:translate(-50%,10px);opacity:1;}
+}
+
+/* ============ 通用版块 ============ */
+section{padding:78px 20px;}
+.container{max-width:1000px;margin:0 auto;}
+.sec-head{text-align:center;margin-bottom:48px;}
+.sec-head h2{
+  font-size:clamp(24px,4vw,34px);
+  color:var(--deep);
+  letter-spacing:2px;
+  font-weight:700;
+  display:inline-block;
+  position:relative;
+  padding-bottom:16px;
+}
+.sec-head h2::after{
+  content:"";position:absolute;
+  bottom:0;left:50%;transform:translateX(-50%);
+  width:52px;height:3px;
+  background:linear-gradient(90deg,var(--green),var(--light));
+  border-radius:2px;
+}
+.sec-head p{
+  color:var(--gray);font-size:14px;letter-spacing:2px;margin-top:14px;
+}
+.alt-bg{background:#fff;}
+.alt-bg2{background:linear-gradient(180deg,#eef5e8,#f7faf5);}
+
+/* ============ 卷首语 ============ */
+.letter{
+  background:#fff;
+  border-radius:14px;
+  padding:clamp(28px,5vw,56px);
+  box-shadow:0 8px 40px rgba(27,94,32,.08);
+  border-left:5px solid var(--light);
+  position:relative;
+}
+.letter::after{
+  content:"❝";
+  position:absolute;top:10px;right:28px;
+  font-size:90px;color:#e8f2dd;line-height:1;
+  font-family:Georgia,serif;
+}
+.letter h3{
+  font-size:22px;color:var(--deep);margin-bottom:6px;letter-spacing:1px;
+}
+.letter .sub{
+  color:var(--mid);font-size:14px;margin-bottom:28px;letter-spacing:1px;
+}
+.letter p{
+  text-indent:2em;
+  margin-bottom:18px;
+  color:#3a3a3a;
+  text-align:justify;
+}
+.sign{
+  text-align:right;
+  margin-top:34px;
+  color:var(--gray);
+  font-size:14px;
+  line-height:2;
+}
+.sign strong{color:var(--deep);font-size:15px;}
+
+/* ============ 信息表 ============ */
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:0;
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 8px 40px rgba(27,94,32,.08);
+}
+.info-row{
+  display:flex;
+  border-bottom:1px solid #eef3e9;
+  border-right:1px solid #eef3e9;
+}
+.info-row .k{
+  flex:0 0 108px;
+  background:#f2f8ec;
+  color:var(--green);
+  font-weight:600;
+  padding:16px 14px;
+  font-size:14.5px;
+  letter-spacing:1px;
+}
+.info-row .v{
+  flex:1;
+  padding:16px 18px;
+  font-size:14.5px;
+  color:#333;
+  line-height:1.8;
+}
+.info-row.full{grid-column:1/-1;border-right:none;}
+.highlight-box{
+  grid-column:1/-1;
+  background:linear-gradient(120deg,#e8f5e0,#f7faf5);
+  padding:24px 26px;
+  border-top:1px dashed var(--pale);
+}
+.highlight-box h4{
+  color:var(--deep);font-size:16px;margin-bottom:10px;letter-spacing:1px;
+}
+.highlight-box p{font-size:14.5px;color:#444;text-align:justify;}
+
+/* ============ 图片占位 ============ */
+.img-placeholder{
+  background:repeating-linear-gradient(45deg,#f0f5ea,#f0f5ea 10px,#e6f0dd 10px,#e6f0dd 20px);
+  border:2px dashed var(--pale);
+  border-radius:12px;
+  min-height:170px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  color:var(--mid);
+  font-size:13.5px;
+  letter-spacing:1px;
+  text-align:center;
+  padding:20px;
+}
+.img-placeholder .ico{font-size:30px;margin-bottom:8px;opacity:.6;}
+.img-placeholder code{
+  background:#fff;padding:2px 8px;border-radius:4px;
+  font-size:12px;color:var(--green);margin-top:6px;
+  display:inline-block;
+}
+.img-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:18px;
+  margin-top:28px;
+}
+
+/* ============ 组织架构 ============ */
+.frame-box{
+  background:#fff;border-radius:14px;padding:28px;
+  box-shadow:0 8px 40px rgba(27,94,32,.08);
+}
+.frame-note{
+  margin-top:20px;padding:18px 22px;
+  background:#f2f8ec;border-radius:10px;
+  font-size:14px;color:#40563a;line-height:1.9;
+}
+.frame-note b{color:var(--deep);}
+.layer-line{
+  display:flex;align-items:center;gap:12px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+.chip{
+  background:linear-gradient(135deg,var(--green),var(--mid));
+  color:#fff;border-radius:22px;
+  padding:7px 18px;font-size:13.5px;letter-spacing:1px;
+  box-shadow:0 3px 10px rgba(46,125,50,.25);
+}
+.chip.soft{
+  background:#e8f5e0;color:var(--green);
+  box-shadow:none;border:1px solid var(--pale);
+}
+
+/* ============ 部门卡片 ============ */
+.dept-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+  gap:20px;
+}
+.dept-card{
+  background:#fff;
+  border-radius:14px;
+  padding:26px 24px;
+  box-shadow:0 4px 22px rgba(27,94,32,.07);
+  border-top:4px solid var(--light);
+  transition:.3s;
+}
+.dept-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 14px 34px rgba(27,94,32,.14);
+}
+.dept-card h4{
+  color:var(--deep);font-size:17px;margin-bottom:12px;
+  display:flex;align-items:center;gap:9px;letter-spacing:1px;
+}
+.dept-card h4 .num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:24px;height:24px;border-radius:50%;
+  background:var(--pale);color:var(--deep);
+  font-size:12px;font-weight:700;flex:0 0 auto;
+}
+.dept-card p{font-size:14px;color:#4a4a4a;line-height:1.85;}
+
+/* ============ 文化 ============ */
+.culture-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+.culture-card{
+  background:#fff;
+  border-radius:14px;
+  padding:26px 24px 24px;
+  box-shadow:0 4px 22px rgba(27,94,32,.07);
+  position:relative;
+  overflow:hidden;
+  transition:.3s;
+}
+.culture-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 34px rgba(27,94,32,.14);
+}
+.culture-card::before{
+  content:"";
+  position:absolute;top:0;left:0;width:100%;height:4px;
+  background:linear-gradient(90deg,var(--green),var(--light),var(--pale));
+}
+.culture-card h4{
+  color:var(--deep);font-size:17px;margin-bottom:12px;letter-spacing:1px;
+}
+.culture-card p{font-size:14px;color:#4a4a4a;line-height:1.9;text-align:justify;}
+
+/* ============ 家规 / 准则 ============ */
+.rule-block{
+  background:#fff;border-radius:14px;
+  padding:clamp(24px,4vw,40px);
+  box-shadow:0 8px 40px rgba(27,94,32,.08);
+  margin-bottom:28px;
+}
+.rule-block h3{
+  color:var(--deep);font-size:19px;margin-bottom:22px;
+  letter-spacing:1px;padding-left:14px;
+  border-left:4px solid var(--light);
+}
+.rule-sub{
+  color:var(--mid);font-size:15px;font-weight:600;
+  margin:24px 0 14px;
+}
+ol.rule-list,ul.rule-list{list-style:none;counter-reset:item;}
+ol.rule-list li,ul.rule-list li{
+  position:relative;
+  padding:10px 0 10px 38px;
+  font-size:14.5px;
+  color:#3d3d3d;
+  border-bottom:1px dashed #eaf1e3;
+  line-height:1.8;
+}
+ol.rule-list li:last-child,ul.rule-list li:last-child{border-bottom:none;}
+ol.rule-list li::before{
+  counter-increment:item;
+  content:counter(item);
+  position:absolute;left:0;top:11px;
+  width:24px;height:24px;border-radius:50%;
+  background:#e8f5e0;color:var(--green);
+  font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+ul.rule-list li::before{
+  content:"✓";
+  position:absolute;left:4px;top:10px;
+  color:var(--light);font-size:15px;font-weight:700;
+}
+.rule-list li b{color:var(--deep);}
+
+/* ============ 项目时间轴 ============ */
+.project-intro{
+  background:#fff;border-radius:14px;
+  padding:clamp(24px,4vw,40px);
+  box-shadow:0 8px 40px rgba(27,94,32,.08);
+  margin-bottom:36px;
+  border-left:5px solid var(--light);
+}
+.project-intro h3{
+  color:var(--deep);font-size:21px;margin-bottom:8px;letter-spacing:1px;
+}
+.project-intro .tag{
+  display:inline-block;background:#e8f5e0;color:var(--green);
+  font-size:12px;padding:3px 12px;border-radius:12px;
+  margin-bottom:16px;letter-spacing:1px;
+}
+.project-intro p{
+  font-size:14.5px;color:#444;margin-bottom:14px;
+  text-align:justify;line-height:1.9;
+}
+.timeline{
+  position:relative;
+  padding-left:26px;
+  margin-top:26px;
+}
+.timeline::before{
+  content:"";position:absolute;left:6px;top:6px;bottom:6px;
+  width:2px;background:linear-gradient(180deg,var(--light),var(--pale));
+}
+.tl-item{
+  position:relative;
+  padding:0 0 18px 22px;
+  font-size:14.5px;
+  color:#3d3d3d;
+  line-height:1.8;
+}
+.tl-item::before{
+  content:"";position:absolute;left:-25px;top:8px;
+  width:10px;height:10px;border-radius:50%;
+  background:#fff;border:2px solid var(--green);
+  box-shadow:0 0 0 3px rgba(124,179,66,.15);
+}
+.tl-item .year{
+  display:inline-block;min-width:52px;
+  color:var(--deep);font-weight:700;
+  margin-right:8px;
+}
+.tl-item.last::before{
+  background:var(--green);
+  box-shadow:0 0 0 4px rgba(124,179,66,.25);
+}
+
+/* ============ 联系 ============ */
+.contact-wrap{
+  background:linear-gradient(150deg,#0f3d14,#1b5e20 55%,#33691e);
+  color:#fff;
+  border-radius:18px;
+  padding:clamp(30px,5vw,56px);
+  box-shadow:0 16px 50px rgba(27,94,32,.28);
+}
+.contact-wrap h2{
+  text-align:center;font-size:clamp(22px,3.6vw,30px);
+  letter-spacing:2px;margin-bottom:10px;
+}
+.contact-wrap .sub-t{
+  text-align:center;color:#c5e1a5;font-size:14px;
+  letter-spacing:3px;margin-bottom:40px;
+}
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:18px;
+}
+.contact-item{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(220,237,200,.18);
+  border-radius:12px;
+  padding:20px 22px;
+  transition:.3s;
+}
+.contact-item:hover{
+  background:rgba(255,255,255,.13);
+  border-color:rgba(220,237,200,.4);
+  transform:translateY(-3px);
+}
+.contact-item .label{
+  font-size:12.5px;color:#c5e1a5;letter-spacing:2px;
+  margin-bottom:8px;
+}
+.contact-item .value{
+  font-size:15px;color:#fff;font-weight:500;
+  word-break:break-all;line-height:1.6;
+}
+.contact-item .value a{color:#dcedc8;text-decoration:none;}
+.contact-item .value a:hover{color:#fff;text-decoration:underline;}
+
+/* ============ 页脚 ============ */
+footer{
+  background:#0f2e12;
+  color:#a5bfa0;
+  text-align:center;
+  padding:36px 20px;
+  font-size:13.5px;
+  line-height:2;
+}
+footer .fslogan{
+  color:#dcedc8;letter-spacing:3px;
+  font-size:15px;margin-bottom:10px;
+}
+
+/* ============ 响应式 ============ */
+@media(max-width:820px){
+  .nav-links{
+    position:fixed;top:64px;left:0;right:0;
+    background:rgba(27,94,32,.98);
+    flex-direction:column;gap:0;
+    max-height:0;overflow:hidden;
+    transition:max-height .35s ease;
+  }
+  .nav-links.open{max-height:420px;}
+  .nav-links li{border-top:1px solid rgba(255,255,255,.1);}
+  .nav-links a{display:block;padding:14px 24px;border:none;font-size:15px;}
+  .menu-btn{display:block;}
+  .hero-meta{gap:22px;}
+  .info-row .k{flex:0 0 92px;font-size:13.5px;}
+  section{padding:56px 16px;}
+  .letter p{font-size:15px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== 导航 ========== -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo"><span class="dot"></span>绿源 · 环保协会</div>
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#letter">卷首语</a></li>
+      <li><a href="#about">协会简介</a></li>
+      <li><a href="#frame">组织架构</a></li>
+      <li><a href="#dept">部门职能</a></li>
+      <li><a href="#culture">协会文化</a></li>
+      <li><a href="#rule">家规准则</a></li>
+      <li><a href="#project">特色项目</a></li>
+      <li><a href="#contact">联系我们</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ========== Hero ========== -->
+<header class="hero">
+  <div class="hero-badge">GREEN SOURCE · 环保公益社团</div>
+  <h1><span class="quote">"</span>绿源<span class="quote">"</span>环保协会</h1>
+  <div class="hero-sub">地球你我共有　绿色你我共享</div>
+  <div class="hero-divider"></div>
+  <div class="hero-meta">
+    <div><strong>2002.05.04</strong>协会成立</div>
+    <div><strong>2010.10</strong>涉外分会成立</div>
+    <div><strong>20+</strong>年环保坚守</div>
+  </div>
+  <div class="scroll-hint">向下滚动 ↓</div>
+</header>
+
+<!-- ========== 卷首语 ========== -->
+<section id="letter" class="alt-bg">
+  <div class="container">
+    <div class="sec-head">
+      <h2>卷首语</h2>
+      <p>这一刻起，你们是主角</p>
+    </div>
+    <div class="letter">
+      <h3>这一刻起，你们是主角</h3>
+      <div class="sub">——寄语"绿源"新会员</div>
+
+      <p>亲爱的会员朋友们：</p>
+      <p>你们好！欢迎你们加入"绿源"！从此你们将成为这个充满活力的团队中的重要的一员。从这一刻起，你们将是"绿源"的主角，"绿源"也将因为你们的加入而更加有活力，更加壮大！</p>
+      <p>你们刚刚跨入大学的校门，迎接你们的将是新鲜而又陌生的大学生活。大学生活是丰富而多彩的，自主的学习、各种各样的学生活动、甚至是甜蜜的爱情，都需要你们去面对，去选择，去行动。社团生活是大学生活中最重要的部分之一，你们选择了"绿源"这个大家庭，那么将来的一段时间内，"绿源"也将成为你们学习生活的一部分。或许，因为"绿源"，你们的理念，你们的生活将会发生改变，甚至影响到你们的一生。</p>
+      <p>是什么使你选择了"绿源"呢？我想首先你们都拥有一颗善良的爱心，拥有一个美好的愿望。"绿源"是一个环保类的公益社团，参加"绿源"的每一位同学都是十分优秀的，都拥有强烈的社会责任感，希望能为秀美的山川倾注自已的爱，希望能走进大自然，亲近大自然，是这些共同的愿望使大家走到了一起。有的同学或许一开始是抱着锻炼自己的目的进来的，那么我可以说，你们的选择是正确的。你们将是"绿源"的主人，"绿源"将为你们展现自己的才华、提高自身素质提供一个宽广的平台。只要你们努力，就能找到属于自己的空间！这里没有功利，没有勾心斗角，更多的是思想的交流、理念的碰撞，个人只要愿意，都可以施展自己的个性。"绿源"培养出来的学生将是十分优秀的。</p>
+      <p>在"绿源"，你们将感受到家一般的温暖，"绿源"的会员都是兄弟姐妹，你们将共同创造并享受一种充满爱、充满温馨的生活。在这里，你们将会找到自己的挚友，你们将会为每一次成功而欣喜，为每一份感动而落泪，你们的心灵将会得到洗涤，思想将会得到升华。记住，"绿源"将是你们的另一个家，只要你们真心投入了，一生一世都将烙上"绿源"的印记！</p>
+      <p>在"绿源"，你们的环保理念，你们的团队精神，你们的各项工作能力都将得到培养和提升。你们可以在大家的支持下实践自己的想法，学会怎样去磨合一个团队，学会怎样更好地表达自己的思想。这一切，都将成为你们今后的工作、学习和生活的一笔宝贵财富！</p>
+      <p>在"绿源"，你们也将有机会一起走出校门，去体验大自然，去触摸社会人生，了解到真实的社会生活。你们将会在体验中感受自己对大自然的热爱，在触摸中审视自己、审视社会。你们的人生目标和人生观或许将会发生改变，追求更高的目标。你们还将有机会与全国各地的同仁们一起交流，一起参加各种社会实践活动。有交流，才会有共同的进步！</p>
+      <p>不要问"绿源"能为你们做些什么，"绿源"只是一个平台，所有的收获都源于你们主动、积极的努力。付出的越多，得到的就越多。所以，你们不要被动地等待参加活动的机会，而应该积极行动起来，自己为自己创造机会。只要有好的想法、可行的创意，那么你们就可以去实践。毕竟，"绿源"的主人是你们，"绿源"是大家的，而不是会长的，也不是骨干们的。相信你们中的每一位都会很出色，"绿源"需要你们的积极参与！</p>
+      <p>你们的到来为"绿源"输入了新鲜的血液，"绿源"的成长依赖于你们的成长。从现在开始，希望你们在好好学习功课之余多接触，多了解一些环保方面的讯息和知识；通过网络等媒介积极与外界联系，结交更多圈子里的朋友；经常到咱们的论坛上来，交流各自的想法，既能与更多的老队员交流，也能使他们了解你们的想法，共享"绿源"的成长；最重要的是，你们要记住自己是"绿源"的一份子，要积极地从现在做起，从小事做起，节约每一滴水、每一粒粮食，少用或不用一次性用品。环保，需要大家在生活中的点滴努力。</p>
+      <p>作为绿源人，我由衷地为你们的到来而高兴。作为过来人，我真心地希望你们能好好珍惜在"绿源"的工作和生活。在"绿源"的经历将成为你们人生历程中不可磨灭的的一页！希望在你们当中能出现更多的环保主主义者、环保斗士。</p>
+      <p>"绿源"的未来寄托在你们的身上！记住，从这一刻起，你们是主角！</p>
+      <p>祝福你们！</p>
+
+      <div class="sign">
+        <strong>"绿源"环保协会创始人</strong><br>
+        你们的朋友：秦志成<br>
+        2003 年 11 月 3 日
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 协会简介 ========== -->
+<section id="about">
+  <div class="container">
+    <div class="sec-head">
+      <h2>协会简介</h2>
+      <p>绿代表生命　源代表根源</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-row">
+        <div class="k">协会名称</div>
+        <div class="v">"绿源"环保协会（中南林业科技大学涉外学院于 2010 年 10 月成立分会）</div>
+      </div>
+      <div class="info-row">
+        <div class="k">成立时间</div>
+        <div class="v">2002.05.04（涉外"绿源"成立时间 2010 年 10 月）</div>
+      </div>
+      <div class="info-row">
+        <div class="k">协会性质</div>
+        <div class="v">由环境保护志愿者组成的非盈利性质的高校环保社团，隶属于校团委，独立开展活动</div>
+      </div>
+      <div class="info-row">
+        <div class="k">协会宗旨</div>
+        <div class="v">让更多的人关注环境现状，让更多的人参与环保行动</div>
+      </div>
+      <div class="info-row">
+        <div class="k">协会口号</div>
+        <div class="v">地球你我共有，绿色你我共享</div>
+      </div>
+      <div class="info-row">
+        <div class="k">协会信念</div>
+        <div class="v">用爱经营绿色事业，用心成长快乐环保</div>
+      </div>
+      <div class="info-row">
+        <div class="k">协会目标</div>
+        <div class="v">让更多的在校大学生参与环保，让更多的人关注环境现状</div>
+      </div>
+      <div class="info-row">
+        <div class="k">协会精神</div>
+        <div class="v">民主　团结　务实　创新</div>
+      </div>
+      <div class="info-row">
+        <div class="k">协会创始人</div>
+        <div class="v">李稷富　秦志成</div>
+      </div>
+      <div class="info-row">
+        <div class="k">协会会歌</div>
+        <div class="v">《同在蓝天下》</div>
+      </div>
+
+      <div class="highlight-box">
+        <h4>「绿源」含义</h4>
+        <p>"绿"代表绿色、代表生命，"源"代表源泉、根源，亦代表源远流长。虽然现在力量很薄弱，但星星之火，可以燎原，我们旨在通过自己的行动，去带动身边的同学一起参与环保，再通过他们，带动更多的人参与到我们的环保事业当中来。</p>
+      </div>
+    </div>
+
+    <div class="img-row">
+      <div class="img-placeholder">
+        <div class="ico">🌿</div>
+        <div>会标图片位</div>
+        <div style="font-size:12.5px;margin-top:6px;color:#666;">由 Green Source 的缩写 GS 组成抽象的叶子和水</div>
+        <code>images/logo.png</code>
+      </div>
+      <div class="img-placeholder">
+        <div class="ico">🚩</div>
+        <div>会旗图片位</div>
+        <code>images/flag.png</code>
+      </div>
+      <div class="img-placeholder">
+        <div class="ico">👕</div>
+        <div>会服图片位（2012 级）</div>
+        <code>images/uniform.png</code>
+      </div>
+    </div>
+
+    <div class="frame-note" style="margin-top:24px;background:#fff;box-shadow:0 4px 22px rgba(27,94,32,.07);">
+      <b>会服设计说明：</b>当今地球逐渐呈现荒漠化，所以全球的陆地图块是一个砖灰色调，意味着绿色在逐渐消失，水资源在不断流失、匮乏；中间的大国意指是一个抽象的地球。周边那些不规则的边缘是干净的水资源，流动的状态是为水资源的消失，地球上的干净水资源已经慢慢被污染尽了，伸出大圆外的几个圆圈组成的是一颗抽象化的绿苗，随着地球环境的恶化，它难以继续生长，急于寻求一片新的环境，下边的人一起手拉手一起保护地球，刻不容缓。这是一个设计感比较强的形象设计，寓意深刻。
+    </div>
+  </div>
+</section>
+
+<!-- ========== 组织架构 ========== -->
+<section id="frame" class="alt-bg">
+  <div class="container">
+    <div class="sec-head">
+      <h2>组织架构</h2>
+      <p>项目负责制 · 理事会 + 执行层 + 两个小组</p>
+    </div>
+
+    <div class="frame-box">
+      <div class="img-placeholder" style="min-height:230px;">
+        <div class="ico">🗂️</div>
+        <div>协会基本框架图位</div>
+        <code>images/framework.png</code>
+      </div>
+
+      <div class="frame-note">
+        协会采用<b>项目负责制</b>，成立<b>理事会</b>（理事会又分荣誉理事、常务理事、理事会员），设五个执行层：<b>会长、团支书、副会长、秘书长、项目总监</b>，负责协会日常事务及团队建设。另设两个小组：<b>思源小组</b>（协会的大脑和眼睛，负责收集整理协会资源及文化）、<b>项目小组</b>（兴趣小组）。
+      </div>
+
+      <div class="layer-line">
+        <span class="chip">理事会</span>
+        <span class="chip soft">荣誉理事</span>
+        <span class="chip soft">常务理事</span>
+        <span class="chip soft">理事会员</span>
+      </div>
+      <div class="layer-line">
+        <span class="chip">会长</span>
+        <span class="chip">团支书</span>
+        <span class="chip">副会长</span>
+        <span class="chip">秘书长</span>
+        <span class="chip">项目总监</span>
+      </div>
+      <div class="layer-line">
+        <span class="chip soft">思源小组</span>
+        <span class="chip soft">项目小组（兴趣小组）</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 部门职能 ========== -->
+<section id="dept">
+  <div class="container">
+    <div class="sec-head">
+      <h2>部门简介</h2>
+      <p>八大职能小组　各司其职</p>
+    </div>
+
+    <div class="dept-grid">
+      <div class="dept-card">
+        <h4><span class="num">1</span>自然体验组</h4>
+        <p>组织会员开展亲近自然的活动和有关项目的运行工作，植物和鸟类知识的记录与分享。</p>
+      </div>
+      <div class="dept-card">
+        <h4><span class="num">2</span>拓展组</h4>
+        <p>负责协会的定向活动、会员的团队培训和野营培训，协助志愿者组管理会员组，负责协会的内部融合以及游戏集。</p>
+      </div>
+      <div class="dept-card">
+        <h4><span class="num">3</span>外联组</h4>
+        <p>负责对外与各高校、协会组织、地方社区联系以及拉赞助资金等工作。</p>
+      </div>
+      <div class="dept-card">
+        <h4><span class="num">4</span>湿地组</h4>
+        <p>学习湿地相关知识，保护、绿地图的绘制等相关活动及协助寒、暑假营工作的开展。</p>
+      </div>
+      <div class="dept-card">
+        <h4><span class="num">5</span>志愿者组</h4>
+        <p>开展志愿者活动，配合各部门开展各项活动，管理会员组，协调各部门的关系。</p>
+      </div>
+      <div class="dept-card">
+        <h4><span class="num">6</span>秘书处</h4>
+        <p>负责协会各项制度的公布和监督执行，负责办公室日常运作，并监管装备处，同时还要对协会内的有用资料进行整合。</p>
+      </div>
+      <div class="dept-card">
+        <h4><span class="num">7</span>环境教育组</h4>
+        <p>针对中小学生定期开展环境保护教育工作、宣传环保意识，协作项目的运行工作。</p>
+      </div>
+      <div class="dept-card">
+        <h4><span class="num">8</span>绿色校园组</h4>
+        <p>从校园出发，开展节能减排等有关活动以及协助相关项目的开展。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 协会文化 ========== -->
+<section id="culture" class="alt-bg2">
+  <div class="container">
+    <div class="sec-head">
+      <h2>协会文化</h2>
+      <p>家文化 · 清盘文化 · 挫文化 · 老人与小孩文化</p>
+    </div>
+
+    <div class="culture-grid">
+      <div class="culture-card">
+        <h4>1 · 家文化</h4>
+        <p>家文化是先做朋友后做事的延伸。家是我们为同一个目标而一起共同努力、奋斗的地方。在这个大家庭里一起交流一起分享，一起忧愁一起开心。也正是因为家文化，我们才能更加团结、更加用心的去做环保。</p>
+      </div>
+      <div class="culture-card">
+        <h4>2 · 清盘文化</h4>
+        <p>在"绿源"，我们不管是聚餐还是单独吃饭，都会点适量的菜，发挥最大的食量，把食物全部吃到肚子里，所以我们吃完饭，剩下的菜碗几乎都是空的，甚至连汤都不放过。从小事做起、个人做起，支持环保，杜绝浪费。</p>
+      </div>
+      <div class="culture-card">
+        <h4>3 · 挫文化</h4>
+        <p>"挫"是一种特殊的相处方式，逐渐演变为了"恶搞"。为了挫而挫，老人、小孩一起开心的玩闹，是一种相处方式，是一种情感的流露，是只属于我们的一种默契。这种挫利于绿源人之间的交流，可以拉近我们之间的关系。</p>
+      </div>
+      <div class="culture-card">
+        <h4>4 · 老人与小孩文化</h4>
+        <p>前者传，后者承。在协会待了两年以上的就是老人了，之前的就是小孩。正所谓"家有一老，如有一宝。"正是在老人们的教导下，小孩们不断改善自我，提高自我，为协会的发展增添力量。</p>
+      </div>
+      <div class="culture-card">
+        <h4>5 · 混帐文化</h4>
+        <p>通过男女混帐，帐篷里面谈人生、谈理想，促进交流，打破隔阂与羞涩。在特定的环境下男女混帐时，男生会心生一种保护意识，能够更好的照顾、体谅和保护女生。</p>
+      </div>
+      <div class="culture-card">
+        <h4>6 · 分享文化</h4>
+        <p>分享改变世界。鼓励绿源人将自己的经历、收获与感想分享给其他人，让影响扩大。不仅能够表达自我、分享感受，还带动了别人一起分享。</p>
+      </div>
+      <div class="culture-card">
+        <h4>7 · 族谱文化</h4>
+        <p>为了给"绿源"家族历史记录一个传承，每一届负责人都会为自己取一个族谱名，姓氏则为族谱姓，同一届负责人族谱姓相同，即以此种特定的形式记载下每一届负责人的信息。也算是一个纸质版的老人联系表。</p>
+        <p style="margin-top:12px;padding:12px 14px;background:#f2f8ec;border-radius:8px;color:var(--green);font-weight:600;letter-spacing:2px;">族谱姓氏：海蓝青夏　木叶禾季　乔云苏北　白安时冷年</p>
+      </div>
+      <div class="culture-card">
+        <h4>8 · 其他文化</h4>
+        <p><b>鸟蛋文化、拖鞋文化、酱油文化</b>（去其他部门的活动、例会等打酱油，酱油的精髓不是围观、什么都不做，而是去各个部门广泛学习，汲取精华、促进提升）、<b>奖励文化</b>（当你处于一个团队中时，难免会犯错误，犯了错就要受到惩罚，这些惩罚是为了让你修正错误、变得更加优秀，简称爱的奖励）等等……</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 家规与准则 ========== -->
+<section id="rule">
+  <div class="container">
+    <div class="sec-head">
+      <h2>绿源人家规与环保准则</h2>
+      <p>从点滴做起　从自己做起</p>
+    </div>
+
+    <div class="rule-block">
+      <h3>绿源人家规</h3>
+
+      <div class="rule-sub">一、人事管理</div>
+      <ol class="rule-list">
+        <li><b>第一条：</b>全体成员需要对工作认真负责、讲求效率。部门内部保证良好的沟通和协作，负责人在关心小孩工作的同时加强与会员的交流，做好学长学姐的角色也同样重要；各小孩之间要互相帮助互相协作，有效率地完成负责人分配的工作。</li>
+        <li><b>第二条：</b>协调好与其他部门、社团之间的关系，对于各种反映的问题及时上报，共同商讨，使之得到妥善的解决，促进整个社团工作的顺利开展。</li>
+        <li><b>第三条：</b>实行例会制度，定期对工作进行总结，加强部门人员之间了解，保证部门工作的顺利进行。</li>
+        <li><b>第四条：</b>分配到任务的小孩需积极配合，按质按量按时完成任务，具有良好的分工合作与团队意识。</li>
+      </ol>
+
+      <div class="rule-sub">二、遵守须知</div>
+      <ol class="rule-list">
+        <li>小孩不能反抗负责人的工作安排。</li>
+        <li>不能迟到，不能踩点（切记）。</li>
+        <li>例会活动不能搞其他的事（玩手机，不专注）。</li>
+        <li>例会活动不能随便中途退出，需要和负责人请假，应该提前向负责人请假。</li>
+        <li>晚上例会结束后，男生需要送女生回寝室，负责人送小孩回寝室。</li>
+        <li>同部门小孩不允许谈恋爱。</li>
+        <li>男女插空，开例会时和搭档坐必须把前面位置坐满（一排只剩一个座位可与搭档往后一排坐，如果搭档没来自行往前补好空位）。</li>
+        <li>成员不能私下建小群。</li>
+        <li>例会开始和结束起身扶凳，手机静音，不能留下垃圾。</li>
+        <li>在例会开展每日分享时，非分享人员保持安静，提问人员要等分享者分享完后再进行提问。</li>
+        <li>聚餐遵循光盘原则，吃多少打多少。</li>
+        <li>无特殊情况不得打包、点外卖。</li>
+        <li>与成员之间团结友爱，互帮互助，不得搞小团体孤立他人。</li>
+        <li>委员需要认真完成好自己的任务（eg：摄委拍摄、活委按时举行聚餐……）。</li>
+        <li>伙伴之间喊自然名。</li>
+        <li>按时按照负责人要求完成任务。</li>
+      </ol>
+    </div>
+
+    <div class="rule-block">
+      <h3>环保准则</h3>
+      <ol class="rule-list">
+        <li>不要浪费粮食</li>
+        <li>不要乱扔垃圾</li>
+        <li>不要用一次性</li>
+        <li>不要单面打印</li>
+        <li>提倡节约利用水资源</li>
+        <li>提倡随手关不用的电器</li>
+        <li>提倡带环保袋上街购物</li>
+        <li>提倡废旧物品重复利用</li>
+        <li>热爱环保</li>
+        <li>热爱自然</li>
+        <li>热爱学习</li>
+        <li>用心成长，快乐环保</li>
+      </ol>
+    </div>
+
+    <div class="rule-block">
+      <h3>环保习惯</h3>
+      <ul class="rule-list">
+        <li>少用一次性筷子</li>
+        <li>少用餐巾纸</li>
+        <li>少用塑料袋</li>
+        <li>少浪费粮食</li>
+        <li>少打包食物</li>
+        <li>多双面打印</li>
+        <li>多随手关灯</li>
+        <li>多节约用水</li>
+        <li>多关注环保事件</li>
+        <li>多学习环保知识</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 特色项目 ========== -->
+<section id="project" class="alt-bg">
+  <div class="container">
+    <div class="sec-head">
+      <h2>协会暑期项目</h2>
+      <p>特色营期 · 二十余年传承</p>
+    </div>
+
+    <!-- 湿地使者行动 -->
+    <div class="project-intro">
+      <span class="tag">特色项目 ①</span>
+      <h3>湿地使者行动（现湿地营）· 本部、涉外</h3>
+      <p>正是"湿地使者行动"才促成我们协会的成立，最开始是为了保护湿地，才成立的"绿源"，可以说，我们协会是靠"湿地使者行动"起家的。这么多年来，我们一直在行动，这是我们协会传承得最好的、最有特色的一个项目。通过湿地项目，我们协会多次获得全国性的奖项。</p>
+      <p>湿地使者行动是由世界自然基金会（WWF）、国家林业局《湿地公约》履约办公室等单位联合主办的湿地保护活动，旨在发动和组织全国高校的大学生环保社团和环保爱好者，利用其节假日和课余时间开展湿地保护和宣传工作。</p>
+      <p>其中，我们组织、参加的活动包括：</p>
+
+      <div class="timeline">
+        <div class="tl-item"><span class="year">2002</span>"走进国际重要湿地"</div>
+        <div class="tl-item"><span class="year">2003</span>"追寻通江湖泊"</div>
+        <div class="tl-item"><span class="year">2004</span>"生命之河：从高山到大海"</div>
+        <div class="tl-item"><span class="year">2005</span>"还长江生命之网"</div>
+        <div class="tl-item"><span class="year">2006</span>"维护人类饮水安全，保护鱼类生命家园"</div>
+        <div class="tl-item"><span class="year">2007</span>"饮水当思源，呵护水源地"</div>
+        <div class="tl-item"><span class="year">2008</span>"加强湿地生态系统保护，积极应对全球气候变化"</div>
+        <div class="tl-item"><span class="year">2009</span>"从上游到下游，湿地连着我和你"</div>
+        <div class="tl-item"><span class="year">2010</span>"绿地图，诠释湿地之美"（涉外开始）</div>
+        <div class="tl-item"><span class="year">2011</span>"留住江豚的微笑，寻找江豚最后的避难所"（涉外）</div>
+        <div class="tl-item"><span class="year">2012</span>因 WWF 将重心转移，协会开始了自寻项目，湿地营以"湘江湿地生物多样性"为主题开展活动（涉外）</div>
+        <div class="tl-item"><span class="year">2013</span>让我们一起探寻南洞庭湖的美丽（涉外）</div>
+        <div class="tl-item"><span class="year">2018</span>湿地营以"江南春水碧于天，湿地之旅灵魂行。怀环保之心，测生命之源"为主题开展活动（涉外）</div>
+        <div class="tl-item"><span class="year">2019</span>湿地营以"情系魅力湘西，守护水源地"为主题开展活动（涉外）</div>
+        <div class="tl-item"><span class="year">2021</span>湿地营以"共护水源地，碧水美家园"为主题开展活动</div>
+        <div class="tl-item"><span class="year">2022</span>湿地营以"情醉梅田风情，梦栖湿地华景"为主题在浏阳市梅田水库开展活动</div>
+        <div class="tl-item last"><span class="year">2026</span>湿地营"湿地深呼吸，快乐零距离"走进了岳阳市汨罗市国家湿地公园</div>
+      </div>
+    </div>
+
+    <!-- 护鸟营 -->
+    <div class="project-intro">
+      <span class="tag">特色项目 ②</span>
+      <h3>湖南省大学生护鸟营 · 本部、涉外</h3>
+      <p>湖南大学生护鸟营是 2011 年由中南林业科技大学"绿源"环保协会发起成立的，旨在保护湖南省境内迁徙的候鸟并为之保驾护航的一个特色营期。</p>
+      <p>湖南省由于特殊的地势，成为我国候鸟南北迁徙的 4 条主要通道之一，候鸟迁徙的必经点多，迁徙量大。但是省内非法捕鸟者众多，手段残忍，社会关注度不高，导致捕杀候鸟的现象越来越严重。因此，为了保护候鸟，护鸟营以推动公众参与和政府执法，提高迁徙点的村民保护候鸟的意识，从而改善湖南省境内候鸟迁徙遭破坏的现状，并希望引起社会各界对候鸟保护问题的广泛关注。接下来护鸟营会以新宁县东岭、黄金、麻林为试点开展工作，在总结成功经验后推广到省内其他候鸟迁徙点，最终到达保护候鸟安全过境的目的。</p>
+      <p>我们将用心播散绿色的种子；不惧挑战，用爱护航生命之舟！即使天阔海深，我们深知，鸟儿的歌声是我们最荣耀的勋章！</p>
+
+      <div class="timeline">
+        <div class="tl-item"><span class="year">2011.7</span>由中南林业科技大学"绿源"环保协会主办的以"关注新宁候鸟迁徙，为天使迁徙保驾护航"为主题的湖南省大学生护鸟营正式启动</div>
+        <div class="tl-item"><span class="year">2012.7</span>重返新宁，为候鸟迁徙保驾护航</div>
+        <div class="tl-item"><span class="year">2013.7</span>"守护新宁候鸟迁徙，感受瑶乡人文之魅"</div>
+        <div class="tl-item"><span class="year">2014.7</span>"弘扬生态文化，感悟候鸟之美"</div>
+        <div class="tl-item"><span class="year">2015.7</span>"感受隆回生态之美，关注候鸟迁徙之殇"</div>
+        <div class="tl-item"><span class="year">2016.7</span>"感影片触目之殇，护候鸟迁徙之路"——走进美丽的郴州桂东</div>
+        <div class="tl-item"><span class="year">2017.8</span>"用行动守卫千年鸟道，为天空使者保驾护航"——走进怀化通道县</div>
+        <div class="tl-item"><span class="year">2018.7</span>"爱鸟始于人心，护鸟在于人行"——跨入永州蓝山县</div>
+        <div class="tl-item"><span class="year">2019.7</span>"向南经南，让候鸟归南"——跨入邵阳市新邵县龙溪铺</div>
+        <div class="tl-item"><span class="year">2021.7</span>"归路南寻，候鸟北飞"</div>
+        <div class="tl-item"><span class="year">2022.7</span>"爱鸟始于心，护鸟在于行"——株洲炎陵</div>
+        <div class="tl-item"><span class="year">2023.1</span>"同谱人鸟和谐曲，共唱地球欢乐歌"——东洞庭湖自然保护区</div>
+        <div class="tl-item last"><span class="year">2025.1</span>"护鸟同行，生态共赢"——益阳市南县厂窑镇祥和村</div>
+      </div>
+    </div>
+
+    <!-- 湘西绿色行 -->
+    <div class="project-intro">
+      <span class="tag">特色项目 ③</span>
+      <h3>湘西绿色行 · 涉外</h3>
+      <p>在 2011 年的暑假，全国各地的暑期活动，包括绿色营、湿地保护营等，应协会的需要，我们自主地出发了一支支教队伍，前往湘西龙山县苗儿滩镇黎明村新生小学。关注当地的留守儿童，与他们共同度过一个快乐的暑假，在大山里面建立了一份深厚的感情。小学现在正处于荒废状态，在以前这里有 400 左右的学生，附近很多村寨的学生都在这里读书……（原文此处内容缺失）</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 联系我们 ========== -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <h2>联系我们</h2>
+      <div class="sub-t">JOIN US · 地球你我共有，绿色你我共享</div>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="label">协会邮箱</div>
+          <div class="value">lvyuanren.swan@qq.com</div>
+        </div>
+        <div class="contact-item">
+          <div class="label">微信公众号</div>
+          <div class="value">中南林涉外绿源人</div>
+        </div>
+        <div class="contact-item">
+          <div class="label">协会 QQ</div>
+          <div class="value">1557059732</div>
+        </div>
+        <div class="contact-item">
+          <div class="label">优酷账号</div>
+          <div class="value">林科大绿源人</div>
+        </div>
+        <div class="contact-item">
+          <div class="label">微博</div>
+          <div class="value">中南林涉外"绿源"环保协会</div>
+        </div>
+        <div class="contact-item">
+          <div class="label">抖音账号</div>
+          <div class="value">1527684522</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 页脚 ========== -->
+<footer>
+  <div class="fslogan">地球你我共有　绿色你我共享</div>
+  <div>"绿源"环保协会　成立时间：2002.05.04　涉外分会：2010 年 10 月</div>
+  <div>协会精神：民主　团结　务实　创新　|　协会会歌：《同在蓝天下》</div>
+</footer>
+
+<script>
+// 移动端菜单
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+// 点击导航项后自动收起
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// 滚动渐入动画
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll(
+  '.letter, .info-grid, .dept-card, .culture-card, .rule-block, .project-intro, .frame-box, .contact-wrap'
+).forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity .7s ease, transform .7s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
