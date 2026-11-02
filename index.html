@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1b5e20">
+<meta name="description" content="中南林业科技大学“绿源”环保协会：湿地使者行动、湖南省大学生护鸟营、湘西绿色行，以及垃圾分类、物种记忆、环保问答、低碳一天四个互动小游戏。地球你我共有，绿色你我共享。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="“绿源”环保协会 | 地球你我共有，绿色你我共享">
+<meta property="og:description" content="从湿地草滩到乡村课堂，二十余年环保行动的真实记录。">
+<meta property="og:image" content="https://xvsd467.github.io/lvyuan/assets/camp2026.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%232e7d32'/%3E%3Cpath d='M18 5C9 5 5 10 5 17c0 .6 0 1 .6 1C14 18 19 13 18 5Z' fill='%23c5e1a5'/%3E%3C/svg%3E">
 <title>"绿源"环保协会 | 地球你我共有，绿色你我共享</title>
 <style>
 :root{
@@ -14,6 +21,8 @@
   --cream:#f7faf5;
   --text:#2b2b2b;
   --gray:#6b6b6b;
+  --accent:#e08a2e;
+  --accent-soft:#f7e7cf;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;scroll-padding-top:70px;}
@@ -55,6 +64,8 @@ nav{
 .menu-btn{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;}
 
 /* ============ Hero ============ */
+body{counter-reset:sec;}
+section{position:relative;counter-increment:sec;}
 .hero{
   min-height:100vh;
   display:flex;flex-direction:column;
@@ -62,7 +73,7 @@ nav{
   text-align:center;
   position:relative;
   overflow:hidden;
-  background:linear-gradient(155deg,#0f3d14 0%,#1b5e20 45%,#33691e 100%);
+  background:linear-gradient(155deg,rgba(11,48,16,.84) 0%,rgba(22,80,27,.70) 45%,rgba(45,96,26,.78) 100%),url("assets/birds.jpg") center 35%/cover no-repeat,#0f3d14;
   color:#fff;
   padding:100px 20px 60px;
 }
@@ -95,6 +106,7 @@ nav{
   letter-spacing:6px;
   color:#dcedc8;
   font-weight:300;
+  text-shadow:0 2px 18px rgba(5,25,8,.55);
 }
 .hero-divider{
   position:relative;
@@ -105,6 +117,7 @@ nav{
   position:relative;
   display:flex;gap:38px;flex-wrap:wrap;justify-content:center;
   font-size:14px;color:#c5e1a5;
+  text-shadow:0 2px 14px rgba(5,25,8,.5);
 }
 .hero-meta div{text-align:center;}
 .hero-meta strong{
@@ -380,6 +393,91 @@ ul.rule-list li::before{
 }
 .rule-list li b{color:var(--deep);}
 
+/* 环保习惯打卡 */
+.habit-head{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  margin-bottom:16px;
+}
+.habit-head h3{margin-bottom:0;}
+.habit-meter{
+  display:flex;align-items:center;gap:10px;
+  font-size:12px;color:var(--gray);font-variant-numeric:tabular-nums;
+}
+.habit-bar{
+  display:block;width:120px;height:6px;border-radius:99px;
+  background:#e8f0e2;overflow:hidden;
+}
+.habit-bar i{
+  display:block;height:100%;width:0;border-radius:99px;
+  background:linear-gradient(90deg,var(--light),var(--green));
+  transition:width .35s ease;
+}
+.habit-bar i.full{background:linear-gradient(90deg,var(--accent),#f0b45f);}
+.habit-list{display:grid;gap:2px;}
+.habit-row{
+  display:grid;
+  grid-template-columns:22px minmax(0,1fr) auto auto;
+  align-items:center;gap:12px;width:100%;
+  padding:11px 10px;
+  border:none;border-bottom:1px dashed #eaf1e3;
+  border-radius:10px;background:transparent;
+  font-family:inherit;font-size:14.5px;color:#3d3d3d;
+  text-align:left;cursor:pointer;
+  transition:background .18s ease;
+}
+.habit-row:last-child{border-bottom:none;}
+.habit-row:hover{background:#f8fbf5;}
+.habit-row.done{background:#f3f9ee;}
+.habit-tick{
+  width:18px;height:18px;border-radius:50%;
+  border:1.5px solid #cddcc3;color:transparent;
+  font-size:11px;font-weight:800;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:.18s;
+}
+.habit-tick::before{content:"✓";}
+.habit-row.done .habit-tick{
+  background:var(--green);border-color:var(--green);color:#fff;
+}
+.habit-text{min-width:0;}
+.habit-row.done .habit-text{color:var(--deep);font-weight:600;}
+.habit-tag{
+  font-size:10.5px;letter-spacing:.5px;white-space:nowrap;
+  color:#7b8a73;background:#f7faf4;
+  border:1px solid #e6eee0;border-radius:999px;
+  padding:2px 8px;
+}
+.habit-state{
+  min-width:48px;text-align:center;white-space:nowrap;
+  font-size:10px;letter-spacing:1px;color:#a2ae9c;
+  border:1px solid #e4ebe0;border-radius:999px;
+  padding:2px 8px;transition:.18s;
+}
+.habit-row.done .habit-state{
+  color:#a5671e;background:var(--accent-soft);border-color:#f0d9b8;
+}
+.habit-foot{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  margin-top:14px;font-size:12px;color:#93a08d;line-height:1.7;
+}
+.habit-reset{
+  flex:0 0 auto;border:none;background:none;padding:0;
+  font-family:inherit;font-size:12px;color:var(--accent);
+  cursor:pointer;text-decoration:underline;text-underline-offset:3px;
+}
+.habit-reset:hover{color:#b96c17;}
+@media(max-width:560px){
+  .habit-head{flex-wrap:wrap;gap:10px;}
+  .habit-bar{width:90px;}
+  .habit-row{
+    grid-template-columns:22px minmax(0,1fr) auto auto;
+    gap:8px;font-size:14px;padding:10px 6px;
+  }
+  .habit-tag{font-size:9.5px;padding:1px 6px;}
+  .habit-state{min-width:42px;padding:1px 6px;}
+  .habit-foot{flex-direction:column;align-items:flex-start;gap:8px;}
+}
+
 /* ============ 项目时间轴 ============ */
 .project-intro{
   background:#fff;border-radius:14px;
@@ -411,10 +509,32 @@ ul.rule-list li::before{
 }
 .tl-item{
   position:relative;
-  padding:0 0 18px 22px;
+  display:flex;align-items:center;gap:18px;
+  padding:12px 12px 12px 22px;
   font-size:14.5px;
   color:#3d3d3d;
   line-height:1.8;
+  border-radius:12px;
+  transition:background .2s ease;
+}
+.tl-item:hover{background:#f7faf4;}
+.tl-main{flex:1 1 auto;min-width:0;}
+.tl-tags{
+  flex:0 0 auto;display:flex;flex-wrap:wrap;gap:6px;
+  justify-content:flex-end;max-width:290px;
+}
+.tl-tags span{
+  font-size:10.5px;letter-spacing:.4px;line-height:1.7;
+  color:#71806a;background:#f7faf4;
+  border:1px solid #e6eee0;border-radius:999px;
+  padding:2px 9px;white-space:nowrap;transition:.2s;
+}
+.tl-tags span:first-child{
+  color:#4f713f;background:#eef6e7;border-color:#dcebd0;
+}
+.tl-item:hover .tl-tags span{border-color:#d5e5c8;}
+.tl-item.last .tl-tags span:first-child{
+  color:#a5671e;background:var(--accent-soft);border-color:#f0d9b8;
 }
 .tl-item::before{
   content:"";position:absolute;left:-25px;top:8px;
@@ -425,11 +545,16 @@ ul.rule-list li::before{
 .tl-item .year{
   display:inline-block;min-width:52px;
   color:var(--deep);font-weight:700;
-  margin-right:8px;
+  margin-right:8px;white-space:nowrap;
 }
 .tl-item.last::before{
   background:var(--green);
   box-shadow:0 0 0 4px rgba(124,179,66,.25);
+}
+@media(max-width:700px){
+  .tl-item{flex-wrap:wrap;gap:6px;padding-right:6px;}
+  .tl-main{flex:1 1 100%;}
+  .tl-tags{max-width:100%;justify-content:flex-start;padding-left:60px;}
 }
 
 /* ============ 联系 ============ */
@@ -489,9 +614,625 @@ footer .fslogan{
   color:#dcedc8;letter-spacing:3px;
   font-size:15px;margin-bottom:10px;
 }
+footer .img-credit{margin-top:16px;font-size:12px;color:#8fae8a;}
+footer .img-credit summary{
+  cursor:pointer;list-style:none;display:inline-block;
+  padding:3px 14px;border:1px solid rgba(165,191,160,.3);border-radius:20px;
+  letter-spacing:1px;
+}
+footer .img-credit summary::-webkit-details-marker{display:none;}
+footer .img-credit summary:hover{border-color:var(--pale);color:var(--pale);}
+footer .img-credit p{max-width:780px;margin:10px auto 0;line-height:2;}
+footer .img-credit a{color:#c5e1a5;text-decoration:none;}
+footer .img-credit a:hover{text-decoration:underline;}
+
+
+/* ============ 顶部滚动进度条 ============ */
+.scroll-progress{
+  position:fixed;top:0;left:0;height:3px;width:0;z-index:201;
+  background:linear-gradient(90deg,var(--light),var(--pale));
+  box-shadow:0 0 8px rgba(124,179,66,.7);
+  transition:width .08s linear;
+}
+
+/* ============ 返回顶部 ============ */
+.to-top{
+  position:fixed;right:22px;bottom:26px;width:46px;height:46px;border-radius:50%;
+  border:none;cursor:pointer;background:var(--green);color:#fff;font-size:20px;line-height:1;
+  box-shadow:0 8px 22px rgba(27,94,32,.35);z-index:150;
+  opacity:0;visibility:hidden;transform:translateY(12px);transition:.25s;
+}
+.to-top.show{opacity:1;visibility:visible;transform:translateY(0);}
+.to-top:hover{background:var(--deep);}
+
+/* ============ 导航当前项高亮 ============ */
+.nav-links a.active{color:#fff;border-bottom-color:var(--pale);}
+
+/* ============ 首页 CTA ============ */
+.hero-cta{
+  position:relative;display:inline-block;margin-top:34px;padding:13px 32px;border-radius:999px;
+  background:rgba(255,255,255,.12);border:1.5px solid rgba(220,237,200,.55);
+  color:#fff;text-decoration:none;font-size:15px;letter-spacing:1px;transition:.25s;
+  backdrop-filter:blur(4px);
+}
+.hero-cta:hover{background:var(--pale);color:#1b5e20;border-color:var(--pale);transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.25);}
+
+/* ============ 环保小游戏 ============ */
+.game-wrap{
+  max-width:860px;margin:0 auto;background:#fff;border-radius:22px;
+  padding:30px 30px 26px;border:1px solid rgba(27,94,32,.08);
+  box-shadow:0 12px 40px rgba(27,94,32,.10);
+}
+.game-hud{
+  display:flex;align-items:stretch;gap:10px;
+  background:linear-gradient(135deg,#f1f8e9,#e8f5e9);
+  border-radius:14px;padding:14px 18px;
+}
+.hud-item{flex:1;text-align:center;}
+.hud-item .hud-label{display:block;font-size:12.5px;color:var(--gray);letter-spacing:1px;}
+.hud-item strong{font-size:24px;color:var(--deep);font-variant-numeric:tabular-nums;}
+.hud-item strong.warn{color:#e53935;}
+.hud-bar{height:6px;background:#e3ecdc;border-radius:99px;margin:14px 0 20px;overflow:hidden;}
+.hud-bar>div{
+  height:100%;width:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--light),var(--green));
+  transition:width .1s linear;
+}
+.game-stage{
+  min-height:190px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:6px 0;
+}
+.g-item{display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.g-item.pop{animation:gpop .28s ease;}
+@keyframes gpop{from{transform:scale(.72);opacity:.15}to{transform:scale(1);opacity:1}}
+.g-emoji{font-size:64px;line-height:1.15;}
+.g-name{font-size:19px;font-weight:700;color:var(--text);margin-top:6px;}
+.g-tip{min-height:26px;margin-top:12px;font-size:14.5px;color:var(--gray);transition:color .2s;}
+.g-tip.ok{color:#2e7d32;font-weight:600;}
+.g-tip.bad{color:#c62828;font-weight:600;}
+.g-result{line-height:1.9;font-size:15px;color:var(--gray);}
+.g-result .big{display:block;font-size:44px;font-weight:800;color:var(--deep);line-height:1.15;}
+.g-result .rank{display:block;font-size:18px;font-weight:700;color:var(--green);margin:4px 0 6px;}
+.bins{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px;}
+.bin{
+  position:relative;cursor:pointer;border:2px solid transparent;border-radius:16px;
+  background:#fafcf8;padding:16px 10px 14px;text-align:center;font-family:inherit;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  border-top:5px solid var(--bin-color,#ccc);transition:.2s;
+}
+.bin:hover{transform:translateY(-4px);background:#fff;box-shadow:0 10px 24px rgba(27,94,32,.14);}
+.bin:active{transform:translateY(-1px) scale(.98);}
+.bin .bin-ico{font-size:26px;line-height:1;}
+.bin .bin-name{font-size:14.5px;font-weight:700;color:#37474f;}
+.bin .bin-key{
+  position:absolute;top:8px;right:10px;font-size:11px;color:#9e9e9e;
+  border:1px solid #e0e0e0;border-radius:6px;padding:0 5px;line-height:1.6;
+}
+.bin[data-bin="recycle"]{--bin-color:#1e88e5;}
+.bin[data-bin="hazard"]{--bin-color:#e53935;}
+.bin[data-bin="kitchen"]{--bin-color:#43a047;}
+.bin[data-bin="other"]{--bin-color:#757575;}
+.bin.ok{background:#e8f5e9;border-color:#43a047;border-top-color:#43a047;}
+.bin.no{background:#ffebee;border-color:#e53935;border-top-color:#e53935;animation:gshake .3s;}
+@keyframes gshake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.game-actions{display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;}
+.g-btn{
+  font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;border:none;
+  border-radius:999px;padding:12px 34px;color:#fff;
+  background:linear-gradient(135deg,var(--green),var(--deep));
+  box-shadow:0 8px 20px rgba(46,125,50,.28);transition:.2s;
+}
+.g-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(46,125,50,.36);}
+.g-btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none;}
+.g-btn.ghost{background:#fff;color:var(--green);border:1.5px solid var(--green);box-shadow:none;}
+.g-btn.ghost:hover{background:#f1f8e9;box-shadow:none;}
+.game-note{text-align:center;font-size:12.5px;color:#8a9a8a;margin-top:14px;}
+@media(max-width:820px){
+  .game-wrap{padding:22px 16px 20px;border-radius:18px;}
+  .game-hud{padding:12px 6px;gap:4px;}
+  .hud-item .hud-label{font-size:11.5px;letter-spacing:0;}
+  .hud-item strong{font-size:20px;}
+  .bins{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .g-emoji{font-size:52px;}
+  .g-name{font-size:17px;}
+  .game-stage{min-height:160px;}
+  .g-btn{padding:11px 26px;font-size:14px;}
+  .to-top{right:14px;bottom:18px;}
+}
+
+
+/* ============ 背景纹理与装饰 ============ */
+body{
+  background-color:var(--cream);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%232e7d32' stroke-opacity='0.055' stroke-width='1.2'%3E%3Cpath d='M126 34C96 34 76 52 76 82c0 4 0 8 4 8 34 0 56-24 56-56Z'/%3E%3Cpath d='M80 88C92 72 104 58 124 42'/%3E%3Cpath d='M36 128C20 128 12 138 12 150c0 2 0 4 2 4 16 0 26-12 26-26Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:160px 160px;
+  background-attachment:fixed;
+}
+.sec-head h2::before{
+  content:"";display:block;width:22px;height:22px;margin:0 auto 10px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 3C9 3 3 9 3 18c0 1 0 2 1 2 9 0 16-6 16-17Z' fill='none' stroke='%232e7d32' stroke-width='1.4'/%3E%3Cpath d='M4 20C8 14 12 10 18 6' fill='none' stroke='%232e7d32' stroke-width='1.2'/%3E%3C/svg%3E") center/contain no-repeat;opacity:.55;
+}
+.project-intro{position:relative;}
+.project-intro::after{
+  content:"";position:absolute;top:14px;right:16px;width:46px;height:46px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 3C9 3 3 9 3 18c0 1 0 2 1 2 9 0 16-6 16-17Z' fill='none' stroke='%232e7d32' stroke-width='1.4'/%3E%3Cpath d='M4 20C8 14 12 10 18 6' fill='none' stroke='%232e7d32' stroke-width='1.2'/%3E%3C/svg%3E") center/contain no-repeat;opacity:.10;pointer-events:none;
+}
+.highlight-box{position:relative;overflow:hidden;}
+.highlight-box::after{
+  content:"";position:absolute;right:-6px;bottom:-10px;width:90px;height:90px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 3C9 3 3 9 3 18c0 1 0 2 1 2 9 0 16-6 16-17Z' fill='none' stroke='%232e7d32' stroke-width='1.4'/%3E%3Cpath d='M4 20C8 14 12 10 18 6' fill='none' stroke='%232e7d32' stroke-width='1.2'/%3E%3C/svg%3E") center/contain no-repeat;opacity:.08;pointer-events:none;
+}
+
+/* ============ Hero 背景照片与飘叶 ============ */
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse at center,transparent 38%,rgba(6,26,9,.45) 100%);
+}
+.hero > :not(.leaves){position:relative;z-index:2;}
+.leaves{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2;}
+.leaves span{
+  position:absolute;top:-10%;font-size:18px;opacity:0;will-change:transform;
+  animation:leafFall linear infinite;
+}
+@keyframes leafFall{
+  0%{transform:translateY(-12vh) rotate(0deg);opacity:0;}
+  10%{opacity:.55;}
+  85%{opacity:.3;}
+  100%{transform:translateY(112vh) rotate(320deg);opacity:0;}
+}
+@media(prefers-reduced-motion:reduce){.leaves{display:none;}}
+
+/* ============ 项目配图 ============ */
+.photo-strip{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:26px 0 32px;}
+.photo-card{
+  margin:0;border-radius:16px;overflow:hidden;background:#fff;
+  border:1px solid rgba(27,94,32,.08);
+  box-shadow:0 10px 28px rgba(27,94,32,.10);
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.photo-card:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(27,94,32,.16);}
+.photo-card img{
+  display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;
+  cursor:zoom-in;transition:transform .6s ease;background:#e8f0e2;
+}
+.photo-card:hover img{transform:scale(1.04);}
+.photo-card figcaption{
+  padding:10px 14px 12px;font-size:13px;color:var(--gray);line-height:1.7;background:#fff;
+}
+.photo-card.wide{margin:26px 0 32px;}
+.photo-card.wide img{aspect-ratio:16/9;}
+@media(max-width:820px){
+  .photo-strip{grid-template-columns:1fr;gap:14px;}
+  .scroll-hint{display:none;}
+  .hero{padding-bottom:80px;}
+  .hero-cta{margin-top:26px;}
+}
+
+/* ============ 游戏区横幅 ============ */
+.game-banner{
+  display:flex;align-items:center;gap:20px;max-width:860px;margin:0 auto 22px;
+  background:#fff;border-radius:18px;overflow:hidden;
+  border:1px solid rgba(27,94,32,.08);box-shadow:0 10px 30px rgba(27,94,32,.09);
+}
+.game-banner img{width:230px;height:155px;object-fit:cover;display:block;flex:0 0 auto;}
+.game-banner-text{padding:16px 22px 16px 0;}
+.game-banner-text strong{display:block;font-size:17px;color:var(--deep);margin-bottom:6px;}
+.game-banner-text span{font-size:13.5px;color:var(--gray);}
+@media(max-width:640px){
+  .game-banner{flex-direction:column;align-items:stretch;}
+  .game-banner img{width:100%;height:170px;}
+  .game-banner-text{padding:0 18px 18px;}
+}
+
+/* ============ 会标 / 会旗 / 会服 ============ */
+.asset-card{
+  background:#fff;border-radius:12px;overflow:hidden;
+  border:1px solid rgba(27,94,32,.08);
+  box-shadow:0 6px 20px rgba(27,94,32,.08);
+  display:flex;flex-direction:column;
+}
+.asset-card img{
+  display:block;width:100%;height:220px;object-fit:contain;
+  background:#fff;padding:14px;cursor:zoom-in;
+}
+.asset-card figcaption{
+  padding:10px 14px 12px;font-size:13px;color:var(--gray);line-height:1.7;
+  border-top:1px solid #f0f4ec;text-align:center;
+}
+
+/* ============ 活动纪实 ============ */
+.gallery-lead{max-width:820px;margin:0 auto 30px;text-align:center;font-size:15px;color:#40563a;line-height:2;}
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px;}
+.gallery-grid .photo-card{margin:0;}
+.gallery-grid .photo-card img{aspect-ratio:auto;}
+.gallery-grid figcaption{font-size:13px;}
+.action-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px;}
+.action-card{
+  background:#fff;border-radius:14px;padding:20px 18px;
+  border:1px solid rgba(27,94,32,.08);box-shadow:0 8px 24px rgba(27,94,32,.06);
+}
+.action-card .a-ico{font-size:22px;}
+.action-card h4{font-size:15.5px;color:var(--deep);margin:8px 0 6px;letter-spacing:1px;}
+.action-card p{font-size:13px;color:#5a6f53;line-height:1.85;}
+
+/* ============ 图片灯箱 ============ */
+.lightbox{
+  position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;
+  padding:24px;background:rgba(8,20,10,.92);opacity:0;visibility:hidden;transition:.25s;
+}
+.lightbox.open{opacity:1;visibility:visible;}
+.lightbox img{
+  max-width:92vw;max-height:84vh;border-radius:10px;
+  box-shadow:0 24px 60px rgba(0,0,0,.55);transform:scale(.96);transition:transform .25s;
+}
+.lightbox.open img{transform:scale(1);}
+.lightbox-close{
+  position:absolute;top:18px;right:22px;width:44px;height:44px;border-radius:50%;
+  border:none;background:rgba(255,255,255,.15);color:#fff;font-size:24px;line-height:1;cursor:pointer;
+}
+.lightbox-close:hover{background:rgba(255,255,255,.28);}
+body.locked{overflow:hidden;}
+
+/* ============ 两侧留白装饰 ============ */
+.edge-rail{display:none;opacity:0;transition:opacity .45s ease;}
+.edge-coord{display:none;opacity:0;transition:opacity .45s ease;}
+.edge-rail.show,.edge-coord.show{opacity:1;}
+
+/* 每个版块的编号小标题 */
+.sec-head::before{
+  content:"SECTION " counter(sec,decimal-leading-zero);
+  display:block;margin-bottom:11px;
+  font-size:10px;font-weight:700;letter-spacing:3px;
+  color:var(--accent);
+}
+
+/* 手写现场笔记 */
+.field-note{
+  display:none;position:absolute;width:168px;padding:16px 14px 14px;
+  background:#fffdf7;border:1px solid #eae2d2;
+  box-shadow:0 12px 26px rgba(40,50,30,.07);
+  pointer-events:none;z-index:0;
+}
+.field-note::before{
+  content:"";position:absolute;top:-8px;left:50%;
+  transform:translateX(-50%) rotate(-2deg);
+  width:58px;height:15px;background:rgba(224,138,46,.26);
+  border-left:1px dashed rgba(224,138,46,.35);
+  border-right:1px dashed rgba(224,138,46,.35);
+}
+.field-note .nk{
+  display:block;font-size:8.5px;font-weight:800;letter-spacing:1.8px;
+  color:var(--accent);margin-bottom:6px;
+}
+.field-note p{font-size:12px;line-height:1.8;color:#5c6653;}
+.field-note strong{color:var(--deep);}
+
+.margin-art{
+  display:none;position:absolute;width:104px;height:200px;
+  pointer-events:none;z-index:0;opacity:.17;
+  background-repeat:no-repeat;background-size:contain;background-position:center;
+}
+.art-fern{
+  left:max(22px,calc(50% - 662px));top:180px;height:220px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 220'%3E%3Cg fill='none' stroke='%232e7d32' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M46 216C46 160 47 96 54 18'/%3E%3Cpath d='M52 44C40 40 32 30 30 18M52 44C64 39 72 30 75 18M50 66C37 63 26 53 23 40M50 66C63 62 74 52 78 39M48 90C34 87 22 76 19 62M48 90C62 86 74 75 78 61M46 114C32 111 20 100 16 86M46 114C60 110 73 99 77 85M44 138C31 135 21 125 18 112M44 138C58 134 70 124 74 111M43 162C32 159 24 150 21 139M43 162C55 158 66 149 69 138M42 186C33 183 27 176 25 168M42 186C52 183 61 175 64 166'/%3E%3C/g%3E%3C/svg%3E");
+}
+.art-bird{
+  right:max(22px,calc(50% - 662px));top:176px;height:112px;opacity:.2;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 100'%3E%3Cg fill='none' stroke='%232e7d32' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M4 82C28 78 52 76 74 66C88 60 100 52 112 40'/%3E%3Cpath d='M70 42C70 30 78 22 90 22C100 22 106 28 108 34C100 30 92 32 88 38C84 46 76 50 70 42Z'/%3E%3Cpath d='M108 34C112 32 116 33 118 35'/%3E%3Ccircle cx='99' cy='29' r='1.2' fill='%232e7d32'/%3E%3Cpath d='M78 44C82 52 80 58 72 62'/%3E%3Cpath d='M32 74C34 68 39 66 44 68M48 70C50 64 55 62 60 64'/%3E%3C/g%3E%3C/svg%3E");
+}
+.art-reeds{
+  left:max(22px,calc(50% - 662px));top:184px;height:170px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 160'%3E%3Cg fill='none' stroke='%232e7d32' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M28 148C30 110 30 70 26 34'/%3E%3Cellipse cx='26' cy='24' rx='4' ry='10'/%3E%3Cpath d='M52 148C50 108 52 64 58 30'/%3E%3Cellipse cx='58' cy='20' rx='4' ry='10'/%3E%3Cpath d='M78 148C82 112 84 78 80 48'/%3E%3Cellipse cx='80' cy='38' rx='3.5' ry='9'/%3E%3Cpath d='M28 120C18 112 12 102 10 90M52 112C62 104 68 94 70 82M78 128C68 120 62 110 60 98'/%3E%3Cpath d='M10 152C30 148 48 150 66 148C80 147 90 148 96 150' opacity='.65'/%3E%3Cpath d='M18 158C36 155 54 157 72 155' opacity='.4'/%3E%3C/g%3E%3C/svg%3E");
+}
+.art-loop{
+  right:max(22px,calc(50% - 662px));top:190px;height:112px;opacity:.19;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23e08a2e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M50 13a37 37 0 0 1 32 19'/%3E%3Cpath d='M87 33l-3 12-12-3'/%3E%3Cpath d='M87 63a37 37 0 0 1-32 19'/%3E%3Cpath d='M50 87l-12-3 3-12'/%3E%3Cpath d='M13 63a37 37 0 0 1 18-32'/%3E%3Cpath d='M31 13l12-3 3 12'/%3E%3C/g%3E%3C/svg%3E");
+}
+.note-about{right:max(16px,calc(50% - 682px));top:236px;transform:rotate(2.4deg);}
+.note-project{left:max(16px,calc(50% - 682px));top:206px;transform:rotate(-2.2deg);}
+.note-gallery{right:max(16px,calc(50% - 682px));top:300px;transform:rotate(-1.8deg);}
+
+@media(min-width:1280px){
+  .edge-rail{
+    display:flex;position:fixed;top:50%;transform:translateY(-50%);
+    z-index:5;flex-direction:column;align-items:center;gap:12px;
+    pointer-events:none;color:rgba(27,94,32,.42);
+  }
+  .edge-left{left:13px;}
+  .edge-right{right:13px;color:rgba(27,94,32,.34);}
+  .edge-rail .rail-text{
+    writing-mode:vertical-rl;text-orientation:mixed;
+    font-size:9.5px;letter-spacing:3px;line-height:1.2;
+    font-weight:600;text-transform:uppercase;
+  }
+  .edge-rail .rail-mark{
+    width:34px;height:34px;border-radius:50%;
+    border:1px solid rgba(46,125,50,.32);
+    display:flex;align-items:center;justify-content:center;
+    font-size:11px;font-weight:800;letter-spacing:.5px;
+    color:var(--green);font-family:Georgia,serif;
+  }
+  .edge-rail .rail-dot{
+    width:6px;height:6px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 0 0 rgba(224,138,46,.4);
+    animation:railPulse 3s ease-out infinite;
+  }
+  @keyframes railPulse{
+    0%{box-shadow:0 0 0 0 rgba(224,138,46,.35);}
+    70%{box-shadow:0 0 0 8px rgba(224,138,46,0);}
+    100%{box-shadow:0 0 0 0 rgba(224,138,46,0);}
+  }
+  .edge-coord{
+    display:block;position:fixed;left:18px;bottom:20px;z-index:5;
+    font-size:8.5px;letter-spacing:1.5px;line-height:1.9;
+    color:rgba(46,125,50,.38);pointer-events:none;
+    font-variant-numeric:tabular-nums;
+  }
+}
+@media(min-width:1400px){
+  section[id]::before{
+    content:counter(sec,decimal-leading-zero);
+    position:absolute;top:34px;left:max(24px,calc(50% - 668px));
+    font:800 clamp(64px,6.2vw,104px)/1 Georgia,"Times New Roman",serif;
+    letter-spacing:-6px;color:rgba(46,125,50,.075);
+    pointer-events:none;user-select:none;z-index:0;
+  }
+  .margin-art,.field-note{display:block;}
+}
+
+/* ============ 宽屏两侧角色形象 ============ */
+.side-mascot{
+  display:none;position:fixed;bottom:60px;z-index:4;width:132px;
+  padding:0;border:0;background:none;color:inherit;font-family:inherit;text-align:left;
+  cursor:pointer;-webkit-tap-highlight-color:transparent;
+  opacity:0;visibility:hidden;transform:translateY(14px);
+  transition:opacity .6s ease,transform .6s ease,visibility .6s;
+}
+.side-mascot.show{opacity:1;visibility:visible;transform:none;}
+.side-mascot:focus{outline:none;}
+.side-mascot:focus-visible{outline:2px solid var(--accent);outline-offset:8px;border-radius:12px;}
+.side-mascot svg{
+  position:relative;z-index:1;display:block;width:100%;height:auto;
+  filter:drop-shadow(0 14px 18px rgba(27,94,32,.16));
+  transition:filter .3s ease;
+}
+.side-mascot:hover svg,.side-mascot:focus-visible svg{
+  filter:drop-shadow(0 18px 24px rgba(27,94,32,.24)) brightness(1.02);
+}
+.side-mascot .mascot-inner{animation:mascotFloat 6.5s ease-in-out infinite;}
+.side-mascot .mascot-halo{
+  position:absolute;left:50%;bottom:-8px;z-index:0;width:196px;height:196px;
+  transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(124,179,66,.2),rgba(124,179,66,0) 68%);
+  transition:transform .35s ease,opacity .35s ease;
+}
+.side-mascot:hover .mascot-halo,.side-mascot:focus-visible .mascot-halo{
+  transform:translateX(-50%) scale(1.12);
+}
+.mascot-left{left:max(20px,calc(50% - 662px));}
+.mascot-right{right:max(20px,calc(50% - 662px));bottom:96px;width:126px;}
+.mascot-right .mascot-inner{animation-delay:-3.2s;}
+.mascot-leaf{
+  position:absolute;z-index:2;width:22px;height:22px;opacity:.5;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 3C9 3 3 9 3 18c0 1 0 2 1 2 9 0 16-6 16-17Z' fill='%23eef6e7' stroke='%23558b2f' stroke-width='1.3'/%3E%3Cpath d='M4 20C8 14 12 10 18 6' fill='none' stroke='%23558b2f' stroke-width='1.1'/%3E%3C/svg%3E") center/contain no-repeat;
+  animation:mascotLeaf 7s ease-in-out infinite;
+}
+.mascot-left .mascot-leaf{right:-8px;top:26px;}
+.mascot-left .mascot-leaf.l2{left:-10px;top:104px;width:16px;opacity:.32;animation-delay:-2.6s;}
+.mascot-right .mascot-leaf{left:-8px;top:36px;transform:scaleX(-1);}
+.mascot-right .mascot-leaf.l2{right:-6px;top:112px;width:15px;opacity:.3;animation-delay:-4.1s;transform:scaleX(-1);}
+
+/* 互动提示与对话气泡 */
+.mascot-hint{
+  position:absolute;top:6px;right:-12px;z-index:3;padding:3px 8px;
+  border-radius:999px;background:#fff;border:1px solid #dce8d2;
+  font-size:9.5px;font-weight:700;letter-spacing:1px;color:#4f713f;white-space:nowrap;
+  box-shadow:0 4px 10px rgba(27,94,32,.08);
+  opacity:0;transform:translateY(4px);transition:.25s ease;pointer-events:none;
+}
+.mascot-right .mascot-hint{right:auto;left:-12px;}
+.side-mascot:hover .mascot-hint,.side-mascot:focus-visible .mascot-hint{opacity:1;transform:none;}
+.side-mascot.talked .mascot-hint{display:none;}
+.mascot-bubble{
+  position:absolute;left:50%;bottom:calc(100% + 18px);z-index:5;width:146px;
+  padding:11px 13px;border-radius:14px;background:#fffdf7;
+  border:1px solid #e6dfcd;box-shadow:0 14px 30px rgba(40,50,30,.14);
+  font-size:11.5px;line-height:1.75;color:#4c5644;text-align:left;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transform:translateX(-50%) translateY(8px) scale(.96);transform-origin:bottom center;
+  transition:opacity .25s ease,transform .25s ease,visibility .25s;
+}
+.mascot-left .mascot-bubble{left:calc(50% + 20px);}
+.mascot-left .mascot-bubble::after{left:calc(50% - 20px);}
+.mascot-right .mascot-bubble{left:calc(50% - 8px);}
+.mascot-right .mascot-bubble::after{left:calc(50% + 8px);}
+.mascot-bubble::after{
+  content:"";position:absolute;left:50%;bottom:-6px;width:10px;height:10px;
+  background:#fffdf7;border-right:1px solid #e6dfcd;border-bottom:1px solid #e6dfcd;
+  transform:translateX(-50%) rotate(45deg);
+}
+.mascot-bubble b{
+  display:block;margin-bottom:3px;font-size:9.5px;letter-spacing:1.4px;
+  color:var(--accent);font-weight:800;
+}
+.side-mascot.talking .mascot-bubble{
+  opacity:1;visibility:visible;transform:translateX(-50%) translateY(0) scale(1);
+}
+
+/* 眨眼、瞳孔跟随与点击反馈 */
+.m-eye,.m-globe{transform-box:fill-box;transform-origin:center;}
+.m-actor{transform-box:fill-box;transform-origin:center bottom;}
+.m-eye{transition:transform .09s ease;}
+.side-mascot.blink .m-eye{transform:scaleY(.1);}
+.m-iris{transition:transform .12s linear;}
+.side-mascot.react .m-actor{animation:mascotPop .62s cubic-bezier(.36,1.6,.5,1);}
+.side-mascot.react .mascot-halo{animation:mascotHalo .7s ease;}
+.side-mascot.react .m-zap{animation:mascotZap .6s ease;}
+.side-mascot.react .m-globe{animation:mascotGlobe .75s ease;}
+@keyframes mascotFloat{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-7px);}
+}
+@keyframes mascotLeaf{
+  0%,100%{translate:0 0;rotate:-8deg;}
+  50%{translate:0 -9px;rotate:10deg;}
+}
+@keyframes mascotPop{
+  0%{transform:translateY(0) scale(1);}
+  32%{transform:translateY(-9px) scale(1.05) rotate(-1.5deg);}
+  62%{transform:translateY(1px) scale(.99) rotate(1deg);}
+  100%{transform:translateY(0) scale(1);}
+}
+@keyframes mascotHalo{
+  0%,100%{transform:translateX(-50%) scale(1);}
+  40%{transform:translateX(-50%) scale(1.24);}
+}
+@keyframes mascotZap{
+  0%,100%{opacity:1;}
+  18%,52%{opacity:.2;}
+  34%,72%{opacity:1;}
+}
+@keyframes mascotGlobe{
+  0%,100%{transform:scale(1);}
+  45%{transform:scale(1.14);}
+}
+@media(min-width:1400px) and (min-height:720px){
+  .side-mascot{display:block;}
+}
+@media(prefers-reduced-motion:reduce){
+  .side-mascot{transition:none;}
+  .side-mascot .mascot-inner,.mascot-leaf{animation:none;}
+  .side-mascot.react .m-actor,
+  .side-mascot.react .mascot-halo,
+  .side-mascot.react .m-zap,
+  .side-mascot.react .m-globe{animation:none;}
+}
+@media(min-width:1680px){
+  .mascot-left{width:146px;}
+  .mascot-right{width:138px;}
+  .mascot-left .mascot-bubble{left:calc(50% + 10px);}
+  .mascot-left .mascot-bubble::after{left:calc(50% - 10px);}
+}
+
+/* ============ 游戏切换 / 新增小游戏 ============ */
+.game-tabs{
+  display:flex;justify-content:center;flex-wrap:wrap;gap:6px;
+  max-width:860px;margin:0 auto 18px;padding:6px;
+  background:#fff;border:1px solid #eaeaea;border-radius:999px;
+  box-shadow:0 8px 24px rgba(27,94,32,.06);
+}
+.game-tab{
+  flex:1 1 auto;font-family:inherit;font-size:14px;font-weight:600;
+  color:#5b6b57;background:transparent;border:none;border-radius:999px;
+  padding:9px 18px;cursor:pointer;transition:.22s;white-space:nowrap;
+}
+.game-tab span{
+  font-size:10px;letter-spacing:1px;color:var(--accent);
+  margin-right:5px;font-variant-numeric:tabular-nums;
+}
+.game-tab:hover{background:#f6f8f2;color:var(--deep);}
+.game-tab.active{
+  background:var(--accent);color:#fff;
+  box-shadow:0 8px 18px rgba(224,138,46,.26);
+}
+.game-tab.active span{color:rgba(255,255,255,.78);}
+.game-panel{display:none;}
+.game-panel.active{display:block;animation:panelIn .34s ease;}
+@keyframes panelIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+.game-wrap .game-stage{width:100%;}
+.g-btn[hidden]{display:none;}
+
+.memory-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
+  width:100%;max-width:520px;margin:0 auto;
+}
+.memory-grid.result{display:block;max-width:100%;}
+.memory-grid .g-result{grid-column:1/-1;}
+.mem-card{
+  position:relative;aspect-ratio:1/1;padding:0;border:none;background:none;
+  cursor:pointer;perspective:700px;font-family:inherit;
+}
+.mem-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .38s ease;}
+.mem-card.flipped .mem-inner,.mem-card.matched .mem-inner{transform:rotateY(180deg);}
+.mem-face{
+  position:absolute;inset:0;border-radius:13px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  backface-visibility:hidden;overflow:hidden;
+}
+.mem-back{
+  background:linear-gradient(145deg,#e9f4e1,#d7e9c8);
+  border:1px solid rgba(46,125,50,.16);
+}
+.mem-back span{font-size:20px;opacity:.5;}
+.mem-card:hover .mem-back{border-color:rgba(46,125,50,.4);}
+.mem-front{
+  background:#fff;border:1px solid rgba(46,125,50,.18);
+  transform:rotateY(180deg);gap:2px;
+}
+.mem-front .ico{font-size:clamp(22px,3.4vw,32px);line-height:1;}
+.mem-front .nm{font-size:10.5px;color:#4b5b47;letter-spacing:.5px;}
+.mem-card.matched{cursor:default;}
+.mem-card.matched .mem-front{
+  background:#f1f8e9;border-color:#7cb342;
+  box-shadow:inset 0 0 0 2px rgba(124,179,66,.22);
+}
+.mem-card.matched .mem-front .nm{color:var(--deep);font-weight:700;}
+
+.quiz-box{width:100%;max-width:640px;text-align:left;}
+.quiz-q{font-size:16.5px;font-weight:700;color:var(--text);line-height:1.65;margin:2px 0 16px;}
+.quiz-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.quiz-opts .g-result{grid-column:1/-1;}
+.quiz-opt{
+  font-family:inherit;font-size:13.8px;line-height:1.55;text-align:left;
+  padding:12px 14px;border-radius:12px;border:1px solid #e3ecdc;
+  background:#fafcf8;color:#37474f;cursor:pointer;transition:.18s;
+}
+.quiz-opt:hover:not(:disabled){border-color:var(--green);background:#f1f8e9;transform:translateY(-1px);}
+.quiz-opt.ok{background:#e8f5e9;border-color:#43a047;color:#1b5e20;font-weight:700;}
+.quiz-opt.no{background:#ffebee;border-color:#e53935;color:#b71c1c;}
+.quiz-opt:disabled{cursor:default;opacity:1;}
+
+.carbon-box{width:100%;max-width:640px;text-align:left;}
+.carbon-box .scene-ico{font-size:40px;line-height:1;text-align:center;}
+.carbon-box h4{font-size:19px;color:var(--deep);text-align:center;margin-top:6px;letter-spacing:1px;}
+.carbon-box > p{text-align:center;font-size:13.5px;color:var(--gray);margin:4px 0 16px;}
+.carbon-opts{display:grid;gap:10px;}
+.carbon-opt{
+  display:flex;align-items:center;gap:12px;width:100%;
+  font-family:inherit;font-size:14px;line-height:1.5;text-align:left;
+  padding:12px 15px;border-radius:12px;border:1px solid #e3ecdc;
+  background:#fafcf8;color:#37474f;cursor:pointer;transition:.18s;
+}
+.carbon-opt:hover:not(:disabled){border-color:var(--green);background:#f1f8e9;transform:translateX(2px);}
+.carbon-opt .label{flex:1;}
+.carbon-opt .co2{
+  flex:0 0 auto;font-size:11.5px;color:var(--gray);font-variant-numeric:tabular-nums;
+  border:1px solid #e0e0e0;border-radius:999px;padding:1px 9px;min-width:62px;text-align:center;
+}
+.carbon-opt.picked{border-color:var(--accent);background:var(--accent-soft);}
+.carbon-opt.picked .co2{color:var(--accent);border-color:var(--accent);}
+.carbon-opt.best{border-color:#7cb342;background:#f1f8e9;}
+.carbon-opt.best .co2{color:var(--green);border-color:#7cb342;}
+.carbon-opt:disabled{cursor:default;opacity:1;}
+.carbon-opt:disabled:not(.picked):not(.best){opacity:.62;}
+.carbon-compare{display:inline-block;margin-top:8px;color:var(--green);font-weight:700;}
+.g-tip strong{color:var(--deep);}
+@media(max-width:820px){
+  .game-tabs{border-radius:18px;}
+  .game-tab{padding:8px 12px;font-size:13px;}
+  .memory-grid{max-width:440px;gap:8px;}
+  .quiz-opts{grid-template-columns:1fr;}
+}
+@media(max-width:560px){
+  .game-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;border-radius:16px;}
+  .game-tab{font-size:12.5px;padding:8px 8px;}
+  .memory-grid{max-width:100%;gap:7px;}
+  .mem-front .nm{font-size:9px;}
+  .quiz-q{font-size:15.5px;}
+}
 
 /* ============ 响应式 ============ */
-@media(max-width:820px){
+@media(max-width:1100px){
   .nav-links{
     position:fixed;top:64px;left:0;right:0;
     background:rgba(27,94,32,.98);
@@ -499,18 +1240,182 @@ footer .fslogan{
     max-height:0;overflow:hidden;
     transition:max-height .35s ease;
   }
-  .nav-links.open{max-height:420px;}
+  .nav-links.open{max-height:620px;}
   .nav-links li{border-top:1px solid rgba(255,255,255,.1);}
   .nav-links a{display:block;padding:14px 24px;border:none;font-size:15px;}
   .menu-btn{display:block;}
+}
+@media(max-width:820px){
   .hero-meta{gap:22px;}
   .info-row .k{flex:0 0 92px;font-size:13.5px;}
   section{padding:56px 16px;}
   .letter p{font-size:15px;}
+  .gallery-grid{grid-template-columns:1fr 1fr;}
+  .action-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:560px){
+  .gallery-grid{grid-template-columns:1fr;}
+  .action-grid{grid-template-columns:1fr;}
+  .asset-card img{height:190px;}
 }
 </style>
 </head>
 <body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ========== 两侧留白装饰 ========== -->
+<div class="edge-rail edge-left" aria-hidden="true">
+  <span class="rail-mark">GS</span>
+  <span class="rail-text">GREEN SOURCE · SINCE 2002 · 中南林涉外</span>
+  <span class="rail-dot"></span>
+</div>
+<div class="edge-rail edge-right" aria-hidden="true">
+  <span class="rail-dot"></span>
+  <span class="rail-text">地球你我共有 · 绿色你我共享</span>
+</div>
+<div class="edge-coord" aria-hidden="true">28.23°N · 112.94°E<br>CHANGSHA · HUNAN</div>
+
+<button class="side-mascot mascot-left" type="button" aria-label="和闪电少年互动，听一条环保提示">
+  <span class="mascot-halo"></span>
+  <span class="mascot-leaf"></span>
+  <span class="mascot-leaf l2"></span>
+  <span class="mascot-hint" aria-hidden="true">点我聊聊</span>
+  <span class="mascot-bubble" role="status" aria-live="polite"></span>
+  <svg class="mascot-inner" viewBox="0 0 180 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <g class="m-actor">
+    <ellipse cx="90" cy="250" rx="46" ry="8" fill="#1b5e20" opacity=".12"/>
+    <g>
+      <path d="M22 212 L46 212 L43 242 L25 242 Z" fill="#d98b52" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M22 212 Q34 206 46 212" fill="#8a5a35" stroke="#1d1d1d" stroke-width="3.5"/>
+      <path d="M34 208 C32 196 34 186 40 178" fill="none" stroke="#2e7d32" stroke-width="3" stroke-linecap="round"/>
+      <path d="M38 190 C28 188 22 180 22 170 C32 170 40 178 40 188 Z" fill="#7cb342" stroke="#1d1d1d" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M40 184 C48 180 54 172 54 162 C44 162 38 170 38 180 Z" fill="#558b2f" stroke="#1d1d1d" stroke-width="3" stroke-linejoin="round"/>
+    </g>
+    <path d="M72 192 L70 226 Q70 234 77 234 L85 234 Q90 234 90 228 L92 192 Z" fill="#2b2b2b" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M108 192 L110 226 Q110 234 103 234 L95 234 Q90 234 90 228 L88 192 Z" fill="#2b2b2b" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M62 230 Q62 222 71 222 L89 222 Q96 222 98 229 L100 238 Q100 244 94 244 L67 244 Q60 244 60 238 Z" fill="#f4f4ee" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M118 230 Q118 222 109 222 L91 222 Q84 222 82 229 L80 238 Q80 244 86 244 L113 244 Q120 244 120 238 Z" fill="#f4f4ee" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M64 234 L96 234 M84 234 L116 234" stroke="#1d1d1d" stroke-width="2.5" opacity=".45"/>
+    <rect x="82" y="118" width="16" height="18" rx="5" fill="#f6d7c3" stroke="#1d1d1d" stroke-width="3"/>
+    <path d="M70 126 Q90 118 110 126 L114 196 Q90 204 66 196 Z" fill="#242424" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M56 126 Q68 120 78 124 L72 200 Q60 198 54 190 Z" fill="#f4f4ee" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M124 126 Q112 120 102 124 L108 200 Q120 198 126 190 Z" fill="#f4f4ee" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M78 124 L90 144 L102 124 L108 130 L90 152 L72 130 Z" fill="#f4f4ee" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round"/>
+    <g class="m-zap"><path d="M76 150 L68 164 L74 164 L71 178 L83 158 L76 158 L80 150 Z" fill="#f2c94c" stroke="#1d1d1d" stroke-width="2.2" stroke-linejoin="round"/></g>
+    <path d="M84 130 Q90 142 96 130" fill="none" stroke="#1d1d1d" stroke-width="2"/>
+    <path d="M90 142 L94 148 L90 154 L86 148 Z" fill="#7cb342" stroke="#1d1d1d" stroke-width="2"/>
+    <path d="M58 134 Q42 148 40 172 Q39 184 47 186 Q55 187 56 176 L64 148 Z" fill="#f4f4ee" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M41 178 Q40 188 48 190 Q56 191 57 181 Z" fill="#242424" stroke="#1d1d1d" stroke-width="3"/>
+    <circle cx="49" cy="190" r="8" fill="#f6d7c3" stroke="#1d1d1d" stroke-width="3.5"/>
+    <path d="M122 134 Q138 146 140 168 Q141 178 134 180 Q127 181 126 172 L118 148 Z" fill="#f4f4ee" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M139 170 Q142 180 134 184 Q126 186 124 176 Z" fill="#242424" stroke="#1d1d1d" stroke-width="3"/>
+    <circle cx="43" cy="92" r="9" fill="#f6d7c3" stroke="#1d1d1d" stroke-width="3.5"/>
+    <circle cx="137" cy="92" r="9" fill="#f6d7c3" stroke="#1d1d1d" stroke-width="3.5"/>
+    <path d="M42 84 C42 52 60 36 90 36 C120 36 138 52 138 84 C138 114 120 134 90 134 C60 134 42 114 42 84 Z" fill="#f6d7c3" stroke="#1d1d1d" stroke-width="4"/>
+    <path d="M40 78 Q36 118 48 152 Q54 158 58 148 Q50 118 54 88 Z" fill="#242424" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M140 78 Q144 118 132 152 Q126 158 122 148 Q130 118 126 88 Z" fill="#242424" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M40 84 C38 44 58 24 90 24 C122 24 142 44 140 84 L132 68 L124 82 L116 60 L106 80 L96 54 L86 80 L74 58 L64 82 L54 64 L46 86 Z" fill="#242424" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M42 78 L48 52 L58 66 L64 40 L76 60 L84 32 L94 58 L104 36 L112 62 L122 44 L128 70 L138 54 L138 76 L128 68 L118 76 L106 66 L94 78 L82 66 L70 78 L58 66 L46 78 Z" fill="#242424" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M62 52 Q76 40 94 40" fill="none" stroke="#4d4d4d" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+    <g class="m-zap"><path d="M118 46 L130 46 L123 58 L132 58 L116 78 L120 63 L112 63 Z" fill="#f2c94c" stroke="#1d1d1d" stroke-width="2.2" stroke-linejoin="round"/></g>
+    <g class="m-eye">
+      <ellipse cx="70" cy="98" rx="13" ry="14" fill="#fff" stroke="#1d1d1d" stroke-width="3"/>
+      <g class="m-iris">
+        <circle cx="71" cy="100" r="8" fill="#e08a2e"/>
+        <circle cx="71" cy="100" r="3.6" fill="#2b1b10"/>
+        <circle cx="68" cy="96" r="2.6" fill="#fff"/>
+        <circle cx="74" cy="104" r="1.2" fill="#fff"/>
+      </g>
+    </g>
+    <g class="m-eye">
+      <ellipse cx="110" cy="98" rx="13" ry="14" fill="#fff" stroke="#1d1d1d" stroke-width="3"/>
+      <g class="m-iris">
+        <circle cx="109" cy="100" r="8" fill="#e08a2e"/>
+        <circle cx="109" cy="100" r="3.6" fill="#2b1b10"/>
+        <circle cx="106" cy="96" r="2.6" fill="#fff"/>
+        <circle cx="112" cy="104" r="1.2" fill="#fff"/>
+      </g>
+    </g>
+    <path d="M86 116 Q90 120 94 116" fill="none" stroke="#1d1d1d" stroke-width="2.6" stroke-linecap="round"/>
+    <ellipse cx="58" cy="112" rx="8" ry="4" fill="#f2a09a" opacity=".55"/>
+    <ellipse cx="122" cy="112" rx="8" ry="4" fill="#f2a09a" opacity=".55"/>
+    </g>
+  </svg>
+</button>
+
+<button class="side-mascot mascot-right" type="button" aria-label="和地球女孩互动，听一条环保提示">
+  <span class="mascot-halo"></span>
+  <span class="mascot-leaf"></span>
+  <span class="mascot-leaf l2"></span>
+  <span class="mascot-hint" aria-hidden="true">点我聊聊</span>
+  <span class="mascot-bubble" role="status" aria-live="polite"></span>
+  <svg class="mascot-inner" viewBox="0 0 180 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <g class="m-actor">
+    <ellipse cx="90" cy="250" rx="48" ry="8" fill="#1b5e20" opacity=".12"/>
+    <path d="M74 206 L73 230 Q73 236 80 236 L86 236 Q90 236 90 230 L90 206 Z" fill="#f8f4ee" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M106 206 L107 230 Q107 236 100 236 L94 236 Q90 236 90 230 L90 206 Z" fill="#f8f4ee" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M66 232 Q66 226 74 226 L88 226 Q94 226 95 232 L95 240 Q95 245 89 245 L70 245 Q63 245 63 239 Z" fill="#242424" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M114 232 Q114 226 106 226 L92 226 Q86 226 85 232 L85 240 Q85 245 91 245 L110 245 Q117 245 117 239 Z" fill="#242424" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round"/>
+    <rect x="82" y="118" width="16" height="18" rx="5" fill="#f8dcc9" stroke="#1d1d1d" stroke-width="3"/>
+    <path d="M66 130 Q90 120 114 130 L128 204 Q90 218 52 204 Z" fill="#26334d" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M52 204 Q90 218 128 204 L130 214 Q90 228 50 214 Z" fill="#c0392b" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M76 128 L90 142 L104 128 L110 134 L90 152 L70 134 Z" fill="#f7f7f2" stroke="#1d1d1d" stroke-width="3"/>
+    <path d="M90 140 L80 132 L78 146 Z" fill="#c0392b" stroke="#1d1d1d" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M90 140 L100 132 L102 146 Z" fill="#c0392b" stroke="#1d1d1d" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="90" cy="140" r="4" fill="#c0392b" stroke="#1d1d1d" stroke-width="2"/>
+    <circle cx="90" cy="162" r="2" fill="#f7f7f2"/>
+    <circle cx="90" cy="174" r="2" fill="#f7f7f2"/>
+    <circle cx="90" cy="186" r="2" fill="#f7f7f2"/>
+    <path d="M64 134 Q50 150 50 176 Q50 186 58 188 Q66 189 68 178 L74 150 Z" fill="#26334d" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M50 178 Q49 188 57 190 Q65 191 66 181 Z" fill="#c0392b" stroke="#1d1d1d" stroke-width="3"/>
+    <path d="M116 134 Q130 150 130 176 Q130 186 122 188 Q114 189 112 178 L106 150 Z" fill="#26334d" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M130 178 Q131 188 123 190 Q115 191 114 181 Z" fill="#c0392b" stroke="#1d1d1d" stroke-width="3"/>
+    <g class="m-globe">
+      <circle cx="90" cy="184" r="18" fill="#8ed4e8" stroke="#1d1d1d" stroke-width="3.5"/>
+      <path d="M78 176 C82 168 92 168 96 174 C100 180 94 188 86 188 C80 188 76 183 78 176 Z" fill="#6abf69" stroke="#1d1d1d" stroke-width="2"/>
+      <path d="M100 190 C104 186 111 187 112 192 C113 197 107 201 102 199 C98 197 97 193 100 190 Z" fill="#6abf69" stroke="#1d1d1d" stroke-width="2"/>
+      <circle cx="84" cy="177" r="3" fill="#fff" opacity=".8"/>
+    </g>
+    <circle cx="70" cy="190" r="7" fill="#f8dcc9" stroke="#1d1d1d" stroke-width="3"/>
+    <circle cx="110" cy="190" r="7" fill="#f8dcc9" stroke="#1d1d1d" stroke-width="3"/>
+    <path d="M40 84 Q36 130 48 160 Q54 168 60 156 Q52 128 54 92 Z" fill="#f2a6a0" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M140 84 Q144 130 132 160 Q126 168 120 156 Q128 128 126 92 Z" fill="#f2a6a0" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="38" cy="72" r="17" fill="#f2a6a0" stroke="#1d1d1d" stroke-width="4"/>
+    <circle cx="142" cy="72" r="17" fill="#f2a6a0" stroke="#1d1d1d" stroke-width="4"/>
+    <path d="M28 62 Q38 70 48 62 M132 62 Q142 70 152 62" fill="none" stroke="#d98a84" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M42 88 C42 54 60 36 90 36 C120 36 138 54 138 88 C138 118 120 138 90 138 C60 138 42 118 42 88 Z" fill="#f8dcc9" stroke="#1d1d1d" stroke-width="4"/>
+    <path d="M40 86 C38 46 58 26 90 26 C122 26 142 46 140 86 L130 72 L120 84 L110 66 L100 82 L90 62 L80 82 L70 66 L60 84 L50 72 Z" fill="#f2a6a0" stroke="#1d1d1d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M42 84 Q42 46 90 42 Q138 46 138 84 Q130 68 118 76 Q110 60 90 66 Q70 60 62 76 Q50 68 42 84 Z" fill="#f2a6a0" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M90 28 C88 16 92 10 98 6" fill="none" stroke="#558b2f" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M96 12 C104 8 112 10 116 16 C108 20 100 18 96 12 Z" fill="#7cb342" stroke="#1d1d1d" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M90 14 C82 10 76 12 72 18 C80 22 87 20 90 14 Z" fill="#7cb342" stroke="#1d1d1d" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M52 50 C44 42 46 32 56 28 C62 38 60 46 52 50 Z" fill="#7cb342" stroke="#1d1d1d" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M128 50 C136 42 134 32 124 28 C118 38 120 46 128 50 Z" fill="#7cb342" stroke="#1d1d1d" stroke-width="2.5" stroke-linejoin="round"/>
+    <g class="m-eye">
+      <ellipse cx="70" cy="102" rx="15" ry="17" fill="#fff" stroke="#1d1d1d" stroke-width="3"/>
+      <g class="m-iris">
+        <circle cx="71" cy="104" r="10" fill="#4caf50"/>
+        <circle cx="71" cy="104" r="4.5" fill="#1b3b1c"/>
+        <circle cx="67" cy="99" r="3.2" fill="#fff"/>
+        <circle cx="75" cy="109" r="1.4" fill="#fff"/>
+      </g>
+    </g>
+    <g class="m-eye">
+      <ellipse cx="110" cy="102" rx="15" ry="17" fill="#fff" stroke="#1d1d1d" stroke-width="3"/>
+      <g class="m-iris">
+        <circle cx="109" cy="104" r="10" fill="#4caf50"/>
+        <circle cx="109" cy="104" r="4.5" fill="#1b3b1c"/>
+        <circle cx="105" cy="99" r="3.2" fill="#fff"/>
+        <circle cx="113" cy="109" r="1.4" fill="#fff"/>
+      </g>
+    </g>
+    <path d="M84 124 Q90 130 96 124" fill="none" stroke="#1d1d1d" stroke-width="2.6" stroke-linecap="round"/>
+    <ellipse cx="56" cy="118" rx="8" ry="4" fill="#f29b96" opacity=".55"/>
+    <ellipse cx="124" cy="118" rx="8" ry="4" fill="#f29b96" opacity=".55"/>
+    </g>
+  </svg>
+</button>
 
 <!-- ========== 导航 ========== -->
 <nav>
@@ -525,6 +1430,8 @@ footer .fslogan{
       <li><a href="#culture">协会文化</a></li>
       <li><a href="#rule">家规准则</a></li>
       <li><a href="#project">特色项目</a></li>
+      <li><a href="#gallery">活动纪实</a></li>
+      <li><a href="#game">环保小游戏</a></li>
       <li><a href="#contact">联系我们</a></li>
     </ul>
   </div>
@@ -540,6 +1447,17 @@ footer .fslogan{
     <div><strong>2002.05.04</strong>协会成立</div>
     <div><strong>2010.10</strong>涉外分会成立</div>
     <div><strong>20+</strong>年环保坚守</div>
+  </div>
+    <a class="hero-cta" href="#game">🎮 玩一局环保小游戏</a>
+  <div class="leaves" aria-hidden="true">
+    <span style="left:6%;font-size:20px;animation-duration:17s;animation-delay:0s;">🍃</span>
+    <span style="left:18%;font-size:15px;animation-duration:22s;animation-delay:3s;">🍂</span>
+    <span style="left:31%;font-size:24px;animation-duration:19s;animation-delay:6s;">🍃</span>
+    <span style="left:46%;font-size:16px;animation-duration:25s;animation-delay:1.5s;">🍃</span>
+    <span style="left:62%;font-size:21px;animation-duration:18s;animation-delay:8s;">🍂</span>
+    <span style="left:75%;font-size:14px;animation-duration:23s;animation-delay:4.5s;">🍃</span>
+    <span style="left:88%;font-size:23px;animation-duration:20s;animation-delay:10s;">🍃</span>
+    <span style="left:95%;font-size:16px;animation-duration:26s;animation-delay:12s;">🍂</span>
   </div>
   <div class="scroll-hint">向下滚动 ↓</div>
 </header>
@@ -579,6 +1497,11 @@ footer .fslogan{
 
 <!-- ========== 协会简介 ========== -->
 <section id="about">
+  <span class="margin-art art-fern" aria-hidden="true"></span>
+  <aside class="field-note note-about" aria-hidden="true">
+    <span class="nk">FIELD NOTE / 01</span>
+    <p>湿地不是空地，<br>是会呼吸的课堂。<br><strong>—— 湿地使者行动</strong></p>
+  </aside>
   <div class="container">
     <div class="sec-head">
       <h2>协会简介</h2>
@@ -634,22 +1557,18 @@ footer .fslogan{
     </div>
 
     <div class="img-row">
-      <div class="img-placeholder">
-        <div class="ico">🌿</div>
-        <div>会标图片位</div>
-        <div style="font-size:12.5px;margin-top:6px;color:#666;">由 Green Source 的缩写 GS 组成抽象的叶子和水</div>
-        <code>images/logo.png</code>
-      </div>
-      <div class="img-placeholder">
-        <div class="ico">🚩</div>
-        <div>会旗图片位</div>
-        <code>images/flag.png</code>
-      </div>
-      <div class="img-placeholder">
-        <div class="ico">👕</div>
-        <div>会服图片位（2012 级）</div>
-        <code>images/uniform.png</code>
-      </div>
+      <figure class="asset-card">
+        <img src="assets/logo.jpg" alt="绿源环保协会会标" loading="lazy" decoding="async">
+        <figcaption>会标 · 由 Green Source 的缩写 GS 组成抽象的叶子和水</figcaption>
+      </figure>
+      <figure class="asset-card">
+        <img src="assets/flag.jpg" alt="绿源环保协会会旗" loading="lazy" decoding="async">
+        <figcaption>会旗 · 中南林业科技大学涉外学院"绿源"环保协会</figcaption>
+      </figure>
+      <figure class="asset-card">
+        <img src="assets/uniform.png" alt="2012 级会服正面与背面" loading="lazy" decoding="async">
+        <figcaption>会服 · 2012 级（正面 / 背面）</figcaption>
+      </figure>
     </div>
 
     <div class="frame-note" style="margin-top:24px;background:#fff;box-shadow:0 4px 22px rgba(27,94,32,.07);">
@@ -848,25 +1767,90 @@ footer .fslogan{
     </div>
 
     <div class="rule-block">
-      <h3>环保习惯</h3>
-      <ul class="rule-list">
-        <li>少用一次性筷子</li>
-        <li>少用餐巾纸</li>
-        <li>少用塑料袋</li>
-        <li>少浪费粮食</li>
-        <li>少打包食物</li>
-        <li>多双面打印</li>
-        <li>多随手关灯</li>
-        <li>多节约用水</li>
-        <li>多关注环保事件</li>
-        <li>多学习环保知识</li>
-      </ul>
+      <div class="habit-head">
+        <h3>环保习惯</h3>
+        <div class="habit-meter" aria-live="polite">
+          <span id="habitCount">今日 0 / 10</span>
+          <span class="habit-bar"><i id="habitBar"></i></span>
+        </div>
+      </div>
+      <div class="habit-list" id="habitList">
+        <button class="habit-row" type="button" data-habit="chopsticks" aria-pressed="false">
+          <span class="habit-tick" aria-hidden="true"></span>
+          <span class="habit-text">少用一次性筷子</span>
+          <span class="habit-tag">饮食</span>
+          <span class="habit-state">打卡</span>
+        </button>
+        <button class="habit-row" type="button" data-habit="tissue" aria-pressed="false">
+          <span class="habit-tick" aria-hidden="true"></span>
+          <span class="habit-text">少用餐巾纸</span>
+          <span class="habit-tag">日常</span>
+          <span class="habit-state">打卡</span>
+        </button>
+        <button class="habit-row" type="button" data-habit="bag" aria-pressed="false">
+          <span class="habit-tick" aria-hidden="true"></span>
+          <span class="habit-text">少用塑料袋</span>
+          <span class="habit-tag">购物</span>
+          <span class="habit-state">打卡</span>
+        </button>
+        <button class="habit-row" type="button" data-habit="food" aria-pressed="false">
+          <span class="habit-tick" aria-hidden="true"></span>
+          <span class="habit-text">少浪费粮食</span>
+          <span class="habit-tag">饮食</span>
+          <span class="habit-state">打卡</span>
+        </button>
+        <button class="habit-row" type="button" data-habit="takeaway" aria-pressed="false">
+          <span class="habit-tick" aria-hidden="true"></span>
+          <span class="habit-text">少打包食物</span>
+          <span class="habit-tag">饮食</span>
+          <span class="habit-state">打卡</span>
+        </button>
+        <button class="habit-row" type="button" data-habit="print" aria-pressed="false">
+          <span class="habit-tick" aria-hidden="true"></span>
+          <span class="habit-text">多双面打印</span>
+          <span class="habit-tag">办公</span>
+          <span class="habit-state">打卡</span>
+        </button>
+        <button class="habit-row" type="button" data-habit="light" aria-pressed="false">
+          <span class="habit-tick" aria-hidden="true"></span>
+          <span class="habit-text">多随手关灯</span>
+          <span class="habit-tag">用电</span>
+          <span class="habit-state">打卡</span>
+        </button>
+        <button class="habit-row" type="button" data-habit="water" aria-pressed="false">
+          <span class="habit-tick" aria-hidden="true"></span>
+          <span class="habit-text">多节约用水</span>
+          <span class="habit-tag">用水</span>
+          <span class="habit-state">打卡</span>
+        </button>
+        <button class="habit-row" type="button" data-habit="news" aria-pressed="false">
+          <span class="habit-tick" aria-hidden="true"></span>
+          <span class="habit-text">多关注环保事件</span>
+          <span class="habit-tag">关注</span>
+          <span class="habit-state">打卡</span>
+        </button>
+        <button class="habit-row" type="button" data-habit="learn" aria-pressed="false">
+          <span class="habit-tick" aria-hidden="true"></span>
+          <span class="habit-text">多学习环保知识</span>
+          <span class="habit-tag">学习</span>
+          <span class="habit-state">打卡</span>
+        </button>
+      </div>
+      <div class="habit-foot">
+        <span>点击任意一项，记录今天做到的小事；明天会自动重置。</span>
+        <button class="habit-reset" type="button" id="habitReset">重置今日打卡</button>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ========== 特色项目 ========== -->
 <section id="project" class="alt-bg">
+  <span class="margin-art art-bird" aria-hidden="true"></span>
+  <aside class="field-note note-project" aria-hidden="true">
+    <span class="nk">FIELD NOTE / 02</span>
+    <p>把课堂搬进村子，<br>让孩子先喜欢自然，<br>再愿意保护它。</p>
+  </aside>
   <div class="container">
     <div class="sec-head">
       <h2>协会暑期项目</h2>
@@ -881,24 +1865,37 @@ footer .fslogan{
       <p>湿地使者行动是由世界自然基金会（WWF）、国家林业局《湿地公约》履约办公室等单位联合主办的湿地保护活动，旨在发动和组织全国高校的大学生环保社团和环保爱好者，利用其节假日和课余时间开展湿地保护和宣传工作。</p>
       <p>其中，我们组织、参加的活动包括：</p>
 
+      <div class="photo-strip">
+        <figure class="photo-card">
+          <img src="assets/reed.jpg" alt="湿地芦苇荡" loading="lazy" decoding="async">
+          <figcaption>湿地芦苇荡 · 候鸟、鱼类与底栖生物的栖息地</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="assets/xiangtan1.jpg" alt="湘江湿地" loading="lazy" decoding="async">
+          <figcaption>湘江湿地 · 2012 年湿地营主题「湘江湿地生物多样性」</figcaption>
+        </figure>
+      </div>
+
+
+
       <div class="timeline">
-        <div class="tl-item"><span class="year">2002</span>"走进国际重要湿地"</div>
-        <div class="tl-item"><span class="year">2003</span>"追寻通江湖泊"</div>
-        <div class="tl-item"><span class="year">2004</span>"生命之河：从高山到大海"</div>
-        <div class="tl-item"><span class="year">2005</span>"还长江生命之网"</div>
-        <div class="tl-item"><span class="year">2006</span>"维护人类饮水安全，保护鱼类生命家园"</div>
-        <div class="tl-item"><span class="year">2007</span>"饮水当思源，呵护水源地"</div>
-        <div class="tl-item"><span class="year">2008</span>"加强湿地生态系统保护，积极应对全球气候变化"</div>
-        <div class="tl-item"><span class="year">2009</span>"从上游到下游，湿地连着我和你"</div>
-        <div class="tl-item"><span class="year">2010</span>"绿地图，诠释湿地之美"（涉外开始）</div>
-        <div class="tl-item"><span class="year">2011</span>"留住江豚的微笑，寻找江豚最后的避难所"（涉外）</div>
-        <div class="tl-item"><span class="year">2012</span>因 WWF 将重心转移，协会开始了自寻项目，湿地营以"湘江湿地生物多样性"为主题开展活动（涉外）</div>
-        <div class="tl-item"><span class="year">2013</span>让我们一起探寻南洞庭湖的美丽（涉外）</div>
-        <div class="tl-item"><span class="year">2018</span>湿地营以"江南春水碧于天，湿地之旅灵魂行。怀环保之心，测生命之源"为主题开展活动（涉外）</div>
-        <div class="tl-item"><span class="year">2019</span>湿地营以"情系魅力湘西，守护水源地"为主题开展活动（涉外）</div>
-        <div class="tl-item"><span class="year">2021</span>湿地营以"共护水源地，碧水美家园"为主题开展活动</div>
-        <div class="tl-item"><span class="year">2022</span>湿地营以"情醉梅田风情，梦栖湿地华景"为主题在浏阳市梅田水库开展活动</div>
-        <div class="tl-item last"><span class="year">2026</span>湿地营"湿地深呼吸，快乐零距离"走进了岳阳市汨罗市国家湿地公园</div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2002</span>"走进国际重要湿地"</div><div class="tl-tags"><span>湿地使者</span><span>国际重要湿地</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2003</span>"追寻通江湖泊"</div><div class="tl-tags"><span>湿地使者</span><span>通江湖泊</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2004</span>"生命之河：从高山到大海"</div><div class="tl-tags"><span>湿地使者</span><span>长江流域</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2005</span>"还长江生命之网"</div><div class="tl-tags"><span>湿地使者</span><span>长江生命网</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2006</span>"维护人类饮水安全，保护鱼类生命家园"</div><div class="tl-tags"><span>湿地使者</span><span>饮水安全</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2007</span>"饮水当思源，呵护水源地"</div><div class="tl-tags"><span>湿地使者</span><span>水源地</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2008</span>"加强湿地生态系统保护，积极应对全球气候变化"</div><div class="tl-tags"><span>湿地使者</span><span>气候变化</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2009</span>"从上游到下游，湿地连着我和你"</div><div class="tl-tags"><span>湿地使者</span><span>上下游</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2010</span>"绿地图，诠释湿地之美"（涉外开始）</div><div class="tl-tags"><span>湿地使者</span><span>绿地图</span><span>涉外分会</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2011</span>"留住江豚的微笑，寻找江豚最后的避难所"（涉外）</div><div class="tl-tags"><span>湿地使者</span><span>江豚保护</span><span>涉外分会</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2012</span>因 WWF 将重心转移，协会开始了自寻项目，湿地营以"湘江湿地生物多样性"为主题开展活动（涉外）</div><div class="tl-tags"><span>自寻项目</span><span>生物多样性</span><span>涉外分会</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2013</span>让我们一起探寻南洞庭湖的美丽（涉外）</div><div class="tl-tags"><span>南洞庭湖</span><span>湿地探索</span><span>涉外分会</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2018</span>湿地营以"江南春水碧于天，湿地之旅灵魂行。怀环保之心，测生命之源"为主题开展活动（涉外）</div><div class="tl-tags"><span>湿地使者</span><span>涉外分会</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2019</span>湿地营以"情系魅力湘西，守护水源地"为主题开展活动（涉外）</div><div class="tl-tags"><span>湘西</span><span>水源地</span><span>涉外分会</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2021</span>湿地营以"共护水源地，碧水美家园"为主题开展活动</div><div class="tl-tags"><span>水源地</span><span>碧水美家园</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2022</span>湿地营以"情醉梅田风情，梦栖湿地华景"为主题在浏阳市梅田水库开展活动</div><div class="tl-tags"><span>浏阳</span><span>梅田水库</span></div></div>
+        <div class="tl-item last"><div class="tl-main"><span class="year">2026</span>湿地营"湿地深呼吸，快乐零距离"走进了岳阳市汨罗市国家湿地公园</div><div class="tl-tags"><span>岳阳汨罗</span><span>国家湿地公园</span></div></div>
       </div>
     </div>
 
@@ -910,20 +1907,27 @@ footer .fslogan{
       <p>湖南省由于特殊的地势，成为我国候鸟南北迁徙的 4 条主要通道之一，候鸟迁徙的必经点多，迁徙量大。但是省内非法捕鸟者众多，手段残忍，社会关注度不高，导致捕杀候鸟的现象越来越严重。因此，为了保护候鸟，护鸟营以推动公众参与和政府执法，提高迁徙点的村民保护候鸟的意识，从而改善湖南省境内候鸟迁徙遭破坏的现状，并希望引起社会各界对候鸟保护问题的广泛关注。接下来护鸟营会以新宁县东岭、黄金、麻林为试点开展工作，在总结成功经验后推广到省内其他候鸟迁徙点，最终到达保护候鸟安全过境的目的。</p>
       <p>我们将用心播散绿色的种子；不惧挑战，用爱护航生命之舟！即使天阔海深，我们深知，鸟儿的歌声是我们最荣耀的勋章！</p>
 
+      <figure class="photo-card wide">
+        <img src="assets/geese.jpg" alt="迁徙中的雁群" loading="lazy" decoding="async">
+        <figcaption>迁徙季 · 湖南是我国候鸟南北迁徙的 4 条主要通道之一</figcaption>
+      </figure>
+
+
+
       <div class="timeline">
-        <div class="tl-item"><span class="year">2011.7</span>由中南林业科技大学"绿源"环保协会主办的以"关注新宁候鸟迁徙，为天使迁徙保驾护航"为主题的湖南省大学生护鸟营正式启动</div>
-        <div class="tl-item"><span class="year">2012.7</span>重返新宁，为候鸟迁徙保驾护航</div>
-        <div class="tl-item"><span class="year">2013.7</span>"守护新宁候鸟迁徙，感受瑶乡人文之魅"</div>
-        <div class="tl-item"><span class="year">2014.7</span>"弘扬生态文化，感悟候鸟之美"</div>
-        <div class="tl-item"><span class="year">2015.7</span>"感受隆回生态之美，关注候鸟迁徙之殇"</div>
-        <div class="tl-item"><span class="year">2016.7</span>"感影片触目之殇，护候鸟迁徙之路"——走进美丽的郴州桂东</div>
-        <div class="tl-item"><span class="year">2017.8</span>"用行动守卫千年鸟道，为天空使者保驾护航"——走进怀化通道县</div>
-        <div class="tl-item"><span class="year">2018.7</span>"爱鸟始于人心，护鸟在于人行"——跨入永州蓝山县</div>
-        <div class="tl-item"><span class="year">2019.7</span>"向南经南，让候鸟归南"——跨入邵阳市新邵县龙溪铺</div>
-        <div class="tl-item"><span class="year">2021.7</span>"归路南寻，候鸟北飞"</div>
-        <div class="tl-item"><span class="year">2022.7</span>"爱鸟始于心，护鸟在于行"——株洲炎陵</div>
-        <div class="tl-item"><span class="year">2023.1</span>"同谱人鸟和谐曲，共唱地球欢乐歌"——东洞庭湖自然保护区</div>
-        <div class="tl-item last"><span class="year">2025.1</span>"护鸟同行，生态共赢"——益阳市南县厂窑镇祥和村</div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2011.7</span>由中南林业科技大学"绿源"环保协会主办的以"关注新宁候鸟迁徙，为天使迁徙保驾护航"为主题的湖南省大学生护鸟营正式启动</div><div class="tl-tags"><span>护鸟营</span><span>新宁</span><span>正式启动</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2012.7</span>重返新宁，为候鸟迁徙保驾护航</div><div class="tl-tags"><span>护鸟营</span><span>新宁</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2013.7</span>"守护新宁候鸟迁徙，感受瑶乡人文之魅"</div><div class="tl-tags"><span>新宁</span><span>瑶乡人文</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2014.7</span>"弘扬生态文化，感悟候鸟之美"</div><div class="tl-tags"><span>生态文化</span><span>候鸟之美</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2015.7</span>"感受隆回生态之美，关注候鸟迁徙之殇"</div><div class="tl-tags"><span>隆回</span><span>候鸟迁徙</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2016.7</span>"感影片触目之殇，护候鸟迁徙之路"——走进美丽的郴州桂东</div><div class="tl-tags"><span>郴州桂东</span><span>千年鸟道</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2017.8</span>"用行动守卫千年鸟道，为天空使者保驾护航"——走进怀化通道县</div><div class="tl-tags"><span>怀化通道</span><span>千年鸟道</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2018.7</span>"爱鸟始于人心，护鸟在于人行"——跨入永州蓝山县</div><div class="tl-tags"><span>永州蓝山</span><span>护鸟行动</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2019.7</span>"向南经南，让候鸟归南"——跨入邵阳市新邵县龙溪铺</div><div class="tl-tags"><span>邵阳新邵</span><span>候鸟归南</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2021.7</span>"归路南寻，候鸟北飞"</div><div class="tl-tags"><span>护鸟营</span><span>候鸟北飞</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2022.7</span>"爱鸟始于心，护鸟在于行"——株洲炎陵</div><div class="tl-tags"><span>株洲炎陵</span><span>护鸟行动</span></div></div>
+        <div class="tl-item"><div class="tl-main"><span class="year">2023.1</span>"同谱人鸟和谐曲，共唱地球欢乐歌"——东洞庭湖自然保护区</div><div class="tl-tags"><span>东洞庭湖</span><span>人鸟和谐</span></div></div>
+        <div class="tl-item last"><div class="tl-main"><span class="year">2025.1</span>"护鸟同行，生态共赢"——益阳市南县厂窑镇祥和村</div><div class="tl-tags"><span>益阳南县</span><span>生态共赢</span></div></div>
       </div>
     </div>
 
@@ -932,6 +1936,225 @@ footer .fslogan{
       <span class="tag">特色项目 ③</span>
       <h3>湘西绿色行 · 涉外</h3>
       <p>在 2011 年的暑假，全国各地的暑期活动，包括绿色营、湿地保护营等，应协会的需要，我们自主地出发了一支支教队伍，前往湘西龙山县苗儿滩镇黎明村新生小学。关注当地的留守儿童，与他们共同度过一个快乐的暑假，在大山里面建立了一份深厚的感情。小学现在正处于荒废状态，在以前这里有 400 左右的学生，附近很多村寨的学生都在这里读书……（原文此处内容缺失）</p>
+      <p>对"绿源"来说，支教不只是补课，更是把环境教育带进大山：让孩子认识身边的树、鸟和水，知道家乡的山水为什么值得被守护。</p>
+
+      <div class="photo-strip">
+        <figure class="photo-card">
+          <img src="assets/fenghuang.jpg" alt="湘西凤凰古城" loading="lazy" decoding="async">
+          <figcaption>湘西 · 沱江边的吊脚楼，山与水的日常</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="assets/furong.jpg" alt="湖南山地村落" loading="lazy" decoding="async">
+          <figcaption>大山深处 · 支教队伍走过的山路与村落</figcaption>
+        </figure>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== 活动纪实 ========== -->
+<section id="gallery">
+  <span class="margin-art art-reeds" aria-hidden="true"></span>
+  <aside class="field-note note-gallery" aria-hidden="true">
+    <span class="nk">FIELD NOTE / 03</span>
+    <p>镜头不会说谎，<br>草滩上的脚印<br>也不会。</p>
+  </aside>
+  <div class="container">
+    <div class="sec-head">
+      <h2>活动纪实</h2>
+      <p>镜头里的绿源 · 从湿地草滩到乡村课堂</p>
+    </div>
+
+    <p class="gallery-lead">照片由协会成员在营期与日常活动中拍摄。湿地边的合影、枯水期草滩上的记录、支教学校的操场、树荫下整理问卷的午后——这些片段拼在一起，才是"绿源"二十多年最真实的样子。</p>
+
+    <div class="gallery-grid">
+      <figure class="photo-card">
+        <img src="assets/camp2026.jpg" alt="2026 湿地营成员合影" loading="lazy" decoding="async">
+        <figcaption>2026 湿地营 · "湿地深呼吸，快乐零距离"</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="assets/wetland_survey.jpg" alt="湿地踏查" loading="lazy" decoding="async">
+        <figcaption>湿地踏查 · 走进枯水期的草滩，看见湿地的另一面</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="assets/survey.jpg" alt="调研小组在树荫下核对材料" loading="lazy" decoding="async">
+        <figcaption>调研路上 · 树荫下核对问卷与访谈提纲</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="assets/zhijiao.jpg" alt="湘西支教队员与孩子们的合影" loading="lazy" decoding="async">
+        <figcaption>湘西支教 · 支教队员与孩子们在校园里的合影</figcaption>
+      </figure>
+    </div>
+
+    <div class="action-grid">
+      <div class="action-card">
+        <div class="a-ico">🌿</div>
+        <h4>湿地守护</h4>
+        <p>湿地认知、绿地图绘制、水质与底栖生物观察，把"保护湿地"变成可以记录、可以复盘的行动。</p>
+      </div>
+      <div class="action-card">
+        <div class="a-ico">🕊️</div>
+        <h4>候鸟护航</h4>
+        <p>迁徙季巡护、清除鸟网、入户宣传，在千年鸟道沿线守住每一个迁徙夜。</p>
+      </div>
+      <div class="action-card">
+        <div class="a-ico">📚</div>
+        <h4>环境教育</h4>
+        <p>把课堂搬进小学和社区，用自然观察、游戏和手工课，让孩子先喜欢自然，再愿意保护它。</p>
+      </div>
+      <div class="action-card">
+        <div class="a-ico">🤝</div>
+        <h4>公众参与</h4>
+        <p>垃圾分类挑战、校园宣教、社区访谈，让更多人从"知道"走到"做到"。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 环保小游戏 ========== -->
+<section id="game" class="alt-bg2">
+  <span class="margin-art art-loop" aria-hidden="true"></span>
+  <div class="container">
+    <div class="sec-head">
+      <h2>环保小游戏</h2>
+      <p>四个小游戏 · 从认桶、认物种，到算一算一天的碳足迹</p>
+    </div>
+
+    <div class="game-banner">
+      <img src="assets/bins_sh.jpg" alt="可回收物与其他垃圾桶" loading="lazy" decoding="async">
+      <div class="game-banner-text">
+        <strong>玩一局，记住一个环保常识</strong>
+        <span>垃圾分类、物种记忆、环保问答、低碳一天 —— 挑一个开始</span>
+      </div>
+    </div>
+
+    <div class="game-tabs" role="tablist" aria-label="选择小游戏">
+      <button class="game-tab active" type="button" role="tab" aria-selected="true" aria-controls="panel-sort" data-game="sort"><span>01</span>垃圾分类</button>
+      <button class="game-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-memory" data-game="memory"><span>02</span>物种记忆</button>
+      <button class="game-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-quiz" data-game="quiz"><span>03</span>环保问答</button>
+      <button class="game-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-carbon" data-game="carbon"><span>04</span>低碳一天</button>
+    </div>
+
+    <div class="game-panels">
+      <!-- 01 垃圾分类 -->
+      <div class="game-panel active" id="panel-sort" data-panel="sort" role="tabpanel" aria-label="垃圾分类">
+        <div class="game-wrap">
+          <div class="game-hud">
+            <div class="hud-item"><span class="hud-label">得分</span><strong id="gScore">0</strong></div>
+            <div class="hud-item"><span class="hud-label">连击</span><strong id="gCombo">0</strong></div>
+            <div class="hud-item"><span class="hud-label">剩余秒数</span><strong id="gTime">60</strong></div>
+            <div class="hud-item"><span class="hud-label">最高分</span><strong id="gBest">0</strong></div>
+          </div>
+          <div class="hud-bar"><div id="gProgress"></div></div>
+
+          <div class="game-stage" aria-live="polite">
+            <div class="g-item" id="gItem">
+              <div class="g-emoji">🌱</div>
+              <div class="g-name">准备好开始了吗？</div>
+            </div>
+            <div class="g-tip" id="gTip">点「开始挑战」，把出现的物品投进正确的垃圾桶</div>
+          </div>
+
+          <div class="bins" id="gBins">
+            <button class="bin" data-bin="recycle" aria-label="可回收物（快捷键 1）">
+              <span class="bin-key">1</span><span class="bin-ico">♻️</span><span class="bin-name">可回收物</span>
+            </button>
+            <button class="bin" data-bin="hazard" aria-label="有害垃圾（快捷键 2）">
+              <span class="bin-key">2</span><span class="bin-ico">⚠️</span><span class="bin-name">有害垃圾</span>
+            </button>
+            <button class="bin" data-bin="kitchen" aria-label="厨余垃圾（快捷键 3）">
+              <span class="bin-key">3</span><span class="bin-ico">🍎</span><span class="bin-name">厨余垃圾</span>
+            </button>
+            <button class="bin" data-bin="other" aria-label="其他垃圾（快捷键 4）">
+              <span class="bin-key">4</span><span class="bin-ico">🗑️</span><span class="bin-name">其他垃圾</span>
+            </button>
+          </div>
+
+          <div class="game-actions">
+            <button class="g-btn" id="gStart">开始挑战</button>
+            <button class="g-btn ghost" id="gResetBest">清除最高分</button>
+          </div>
+          <p class="game-note">键盘按 1 ~ 4 也能作答　|　答对得分，连击有加成；答错扣 5 分并显示正确答案</p>
+        </div>
+      </div>
+
+      <!-- 02 物种记忆 -->
+      <div class="game-panel" id="panel-memory" data-panel="memory" role="tabpanel" aria-label="物种记忆">
+        <div class="game-wrap">
+          <div class="game-hud">
+            <div class="hud-item"><span class="hud-label">已配对</span><strong id="mMatched">0 / 6</strong></div>
+            <div class="hud-item"><span class="hud-label">步数</span><strong id="mMoves">0</strong></div>
+            <div class="hud-item"><span class="hud-label">用时</span><strong id="mTime">0s</strong></div>
+            <div class="hud-item"><span class="hud-label">最佳步数</span><strong id="mBest">--</strong></div>
+          </div>
+
+          <div class="game-stage" aria-live="polite">
+            <div class="memory-grid" id="mGrid" aria-label="物种记忆卡片"></div>
+            <div class="g-tip" id="mTip">点「开始翻牌」，记住每个物种的位置</div>
+          </div>
+
+          <div class="game-actions">
+            <button class="g-btn" id="mStart">开始翻牌</button>
+            <button class="g-btn ghost" id="mResetBest">清除最佳</button>
+          </div>
+          <p class="game-note">12 张卡片、6 种珍稀物种　|　翻开两张相同的卡片即配对成功，步数越少越好</p>
+        </div>
+      </div>
+
+      <!-- 03 环保问答 -->
+      <div class="game-panel" id="panel-quiz" data-panel="quiz" role="tabpanel" aria-label="环保问答">
+        <div class="game-wrap">
+          <div class="game-hud">
+            <div class="hud-item"><span class="hud-label">题目</span><strong id="qIndex">0 / 5</strong></div>
+            <div class="hud-item"><span class="hud-label">答对</span><strong id="qScore">0</strong></div>
+            <div class="hud-item"><span class="hud-label">最佳</span><strong id="qBest">--</strong></div>
+          </div>
+
+          <div class="game-stage" aria-live="polite">
+            <div class="quiz-box">
+              <div class="quiz-q" id="qQuestion">随机 5 道题，看看你对身边的自然了解多少。</div>
+              <div class="quiz-opts" id="qOptions"></div>
+            </div>
+            <div class="g-tip" id="qTip">点「开始答题」，每题会给出解析</div>
+          </div>
+
+          <div class="game-actions">
+            <button class="g-btn" id="qStart">开始答题</button>
+            <button class="g-btn" id="qNext" hidden>下一题</button>
+            <button class="g-btn ghost" id="qResetBest">清除最佳</button>
+          </div>
+          <p class="game-note">每次从题库随机抽取 5 题　|　最佳成绩按答对题数记录</p>
+        </div>
+      </div>
+
+      <!-- 04 低碳一天 -->
+      <div class="game-panel" id="panel-carbon" data-panel="carbon" role="tabpanel" aria-label="低碳一天">
+        <div class="game-wrap">
+          <div class="game-hud">
+            <div class="hud-item"><span class="hud-label">场景</span><strong id="cStep">0 / 5</strong></div>
+            <div class="hud-item"><span class="hud-label">今日碳排</span><strong id="cTotal">0.0 kg</strong></div>
+            <div class="hud-item"><span class="hud-label">最低纪录</span><strong id="cBest">--</strong></div>
+          </div>
+
+          <div class="game-stage" aria-live="polite">
+            <div class="carbon-box" id="cScene">
+              <div class="scene-ico">🌅</div>
+              <h4>低碳一天</h4>
+              <p>5 个日常选择，算一算你这一天的碳足迹</p>
+            </div>
+            <div class="g-tip" id="cTip">点「开始这一天」，做出你的选择</div>
+          </div>
+
+          <div class="game-actions">
+            <button class="g-btn" id="cStart">开始这一天</button>
+            <button class="g-btn" id="cNext" hidden>下一站</button>
+            <button class="g-btn ghost" id="cResetBest">清除纪录</button>
+          </div>
+          <p class="game-note">碳排数值为常见生活场景的估算值　|　纪录越低越好，试着过完一个“轻”一天</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -978,6 +2201,20 @@ footer .fslogan{
   <div class="fslogan">地球你我共有　绿色你我共享</div>
   <div>"绿源"环保协会　成立时间：2002.05.04　涉外分会：2010 年 10 月</div>
   <div>协会精神：民主　团结　务实　创新　|　协会会歌：《同在蓝天下》</div>
+  <details class="img-credit">
+    <summary>图片版权说明</summary>
+    <p>
+      本页照片来自 Wikimedia Commons，按原作许可署名使用：
+      <a href="https://commons.wikimedia.org/wiki/File:Birds_on_Poyang_Lake_(15273717673).jpg" target="_blank" rel="noopener">鄱阳湖候鸟</a> © Alastair Rae（CC BY-SA 2.0）·
+      <a href="https://commons.wikimedia.org/wiki/File:Reed_bed_in_Lynford_Lakes_-_geograph.org.uk_-_6007837.jpg" target="_blank" rel="noopener">湿地芦苇荡</a> © David Pashley（CC BY-SA 2.0）·
+      <a href="https://commons.wikimedia.org/wiki/File:Xiang_River_in_Xiangtan_202111301.jpg" target="_blank" rel="noopener">湘江湘潭段</a> © Huangdan2060（CC BY 3.0）·
+      <a href="https://commons.wikimedia.org/wiki/File:Schiermonnikoog_-_Geese_(flying).jpg" target="_blank" rel="noopener">迁徙雁群</a> © Rudolphous（CC BY-SA 4.0）·
+      <a href="https://commons.wikimedia.org/wiki/File:Fenghuang_County,_Hunan,_China,_21_December_2016a.jpg" target="_blank" rel="noopener">凤凰古城</a> © 凌晨疯子（CC BY 2.5）·
+      <a href="https://commons.wikimedia.org/wiki/File:Landscape_at_the_foot_of_Furong_Mountain,_17_February_2021A.jpg" target="_blank" rel="noopener">芙蓉山</a> © Huangdan2060（CC BY 3.0）·
+      <a href="https://commons.wikimedia.org/wiki/File:Sorted_waste_containers_in_Huangpu_Park,_Shanghai.jpg" target="_blank" rel="noopener">分类垃圾桶</a> © Daniel Case（CC BY-SA 3.0）。
+      活动纪实、会标、会旗与会服图片由协会成员提供。
+    </p>
+  </details>
 </footer>
 
 <script>
@@ -1003,7 +2240,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.08 });
 
 document.querySelectorAll(
-  '.letter, .info-grid, .dept-card, .culture-card, .rule-block, .project-intro, .frame-box, .contact-wrap'
+  '.letter, .info-grid, .img-row, .dept-card, .culture-card, .rule-block, .project-intro, .frame-box, .gallery-grid, .action-grid, .contact-wrap'
 ).forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(24px)';
@@ -1011,5 +2248,988 @@ document.querySelectorAll(
   observer.observe(el);
 });
 </script>
+<button class="to-top" id="toTop" aria-label="返回顶部">↑</button>
+
+<script>
+/* ===== 环保小游戏：垃圾分类挑战 ===== */
+(function(){
+  'use strict';
+  var CATS = {
+    recycle:{name:'可回收物', tip:'可回收物指纸张、塑料、金属、玻璃、织物等，回收再加工能重新变成原料。'},
+    hazard:{name:'有害垃圾', tip:'有害垃圾含重金属或有毒物质，必须单独投放，随手丢弃会污染土壤和水源。'},
+    kitchen:{name:'厨余垃圾', tip:'厨余垃圾易腐烂，可以堆肥变成有机肥，用来种花种菜。'},
+    other:{name:'其他垃圾', tip:'其他垃圾难以回收利用，一般做焚烧或填埋处理，少产生一点就少一点负担。'}
+  };
+  var ITEMS = [
+    ['📰','旧报纸','recycle'],
+    ['🧴','塑料饮料瓶','recycle'],
+    ['🥫','易拉罐','recycle'],
+    ['📦','快递纸箱','recycle'],
+    ['🍾','玻璃酒瓶','recycle'],
+    ['👕','旧衣服','recycle'],
+    ['📱','废旧手机','recycle'],
+    ['🍳','旧铁锅','recycle'],
+    ['🛍️','纸质购物袋','recycle'],
+    ['🔌','废旧数据线','recycle'],
+    ['🧻','用过的纸巾','other'],
+    ['🥢','一次性筷子','other'],
+    ['🚬','烟头','other'],
+    ['🍶','打碎的陶瓷碗','other'],
+    ['🧷','用过的尿不湿','other'],
+    ['🦴','大骨头','other'],
+    ['🐱','用过的猫砂','other'],
+    ['😷','用过的口罩','other'],
+    ['🧹','扫地灰尘','other'],
+    ['🩹','用过的创可贴','other'],
+    ['🔋','废电池','hazard'],
+    ['💡','荧光灯管','hazard'],
+    ['💊','过期药品','hazard'],
+    ['🎨','油漆桶','hazard'],
+    ['🌡️','水银温度计','hazard'],
+    ['💅','指甲油','hazard'],
+    ['🐜','杀虫喷雾罐','hazard'],
+    ['🧪','实验室废试剂','hazard'],
+    ['🍚','剩饭剩菜','kitchen'],
+    ['🍌','香蕉皮','kitchen'],
+    ['🥬','烂菜叶','kitchen'],
+    ['🥚','鸡蛋壳','kitchen'],
+    ['🐟','鱼骨鱼刺','kitchen'],
+    ['☕','咖啡渣','kitchen'],
+    ['🍵','茶叶渣','kitchen'],
+    ['🍉','西瓜皮','kitchen'],
+    ['🥕','萝卜皮','kitchen']
+  ];
+  var BIN_ORDER = ['recycle','hazard','kitchen','other'];
+  var BEST_KEY = 'lvyuan_waste_game_best';
+
+  var els = {
+    score: document.getElementById('gScore'),
+    combo: document.getElementById('gCombo'),
+    time: document.getElementById('gTime'),
+    best: document.getElementById('gBest'),
+    progress: document.getElementById('gProgress'),
+    item: document.getElementById('gItem'),
+    tip: document.getElementById('gTip'),
+    bins: document.getElementById('gBins'),
+    start: document.getElementById('gStart'),
+    resetBest: document.getElementById('gResetBest')
+  };
+  if(!els.start) return;
+
+  var DURATION = 60000;
+  var st = {running:false, score:0, combo:0, best:0, endAt:0, timer:null, cur:null, lock:false, gen:0};
+
+  function readBest(){
+    try{
+      var v = parseInt(localStorage.getItem(BEST_KEY), 10);
+      return isNaN(v) ? 0 : v;
+    }catch(e){ return 0; }
+  }
+  function saveBest(v){
+    try{ localStorage.setItem(BEST_KEY, String(v)); }catch(e){}
+  }
+
+  st.best = readBest();
+  els.best.textContent = st.best;
+
+  function updateHud(){
+    els.score.textContent = st.score;
+    els.combo.textContent = st.combo;
+  }
+
+  function pickItem(){
+    var n = ITEMS.length, i;
+    do { i = Math.floor(Math.random()*n); }
+    while(st.cur && ITEMS[i][1] === st.cur[1]);
+    return ITEMS[i];
+  }
+
+  function nextItem(){
+    st.cur = pickItem();
+    els.item.className = 'g-item';
+    els.item.innerHTML = '<div class="g-emoji">'+st.cur[0]+'</div><div class="g-name">'+st.cur[1]+'</div>';
+    void els.item.offsetWidth;
+    els.item.classList.add('pop');
+  }
+
+  function flashBin(key, type){
+    var btn = els.bins.querySelector('.bin[data-bin="'+key+'"]');
+    if(!btn) return;
+    btn.classList.add(type);
+    setTimeout(function(){ btn.classList.remove(type); }, 550);
+  }
+
+  function tick(){
+    var left = Math.max(0, st.endAt - Date.now());
+    var sec = Math.ceil(left/1000);
+    els.time.textContent = sec;
+    els.time.classList.toggle('warn', sec <= 10);
+    els.progress.style.width = (left/DURATION*100) + '%';
+    if(left <= 0) endGame();
+  }
+
+  function rankOf(s){
+    if(s >= 400) return '🏆 环保达人';
+    if(s >= 250) return '🌿 绿色先锋';
+    if(s >= 120) return '🌱 环保新星';
+    return '🌍 继续加油';
+  }
+
+  function endGame(){
+    st.running = false;
+    clearInterval(st.timer);
+    els.start.disabled = false;
+    els.start.textContent = '再来一局';
+    els.time.textContent = '0';
+    els.time.classList.remove('warn');
+    els.progress.style.width = '0%';
+    var isNewBest = st.score > st.best;
+    if(isNewBest){ st.best = st.score; saveBest(st.best); els.best.textContent = st.best; }
+    els.item.className = 'g-item';
+    els.item.innerHTML =
+      '<div class="g-result"><span class="big">'+st.score+' 分</span>'+
+      '<span class="rank">'+rankOf(st.score)+'</span>'+
+      (isNewBest ? '🎉 刷新了你的最高分！' : '最高分 '+st.best+' 分')+'</div>';
+    els.tip.className = 'g-tip';
+    els.tip.textContent = '60 秒结束啦，再来一局巩固一下分类知识吧。';
+  }
+
+  function startGame(){
+    if(st.running) return;
+    st.running = true; st.score = 0; st.combo = 0; st.lock = false;
+    st.gen++;
+    st.endAt = Date.now() + DURATION;
+    els.start.disabled = true;
+    els.start.textContent = '挑战中…';
+    els.time.textContent = '60';
+    els.time.classList.remove('warn');
+    els.progress.style.width = '100%';
+    els.tip.className = 'g-tip';
+    els.tip.textContent = '快速把物品投进正确的垃圾桶！';
+    updateHud();
+    nextItem();
+    clearInterval(st.timer);
+    st.timer = setInterval(tick, 100);
+  }
+
+  function answer(key){
+    if(!st.running || st.lock || !st.cur) return;
+    var cur = st.cur;
+    if(cur[2] === key){
+      st.combo++;
+      var gain = 10 + Math.min(st.combo - 1, 5) * 2;
+      st.score += gain;
+      els.tip.className = 'g-tip ok';
+      els.tip.textContent = '✅ 正确！「'+cur[1]+'」属于'+CATS[cur[2]].name+'　+'+gain+' 分';
+      flashBin(key, 'ok');
+      updateHud();
+      nextItem();
+    }else{
+      st.combo = 0;
+      st.score = Math.max(0, st.score - 5);
+      st.lock = true;
+      updateHud();
+      flashBin(key, 'no');
+      flashBin(cur[2], 'ok');
+      els.tip.className = 'g-tip bad';
+      els.tip.textContent = '❌ 错了，「'+cur[1]+'」是'+CATS[cur[2]].name+'（-5 分）';
+      var gen = st.gen;
+      setTimeout(function(){
+        if(!st.running || gen !== st.gen) return;
+        els.tip.className = 'g-tip';
+        els.tip.textContent = CATS[cur[2]].tip;
+        st.lock = false;
+        nextItem();
+      }, 1400);
+    }
+  }
+
+  els.start.addEventListener('click', startGame);
+  els.resetBest.addEventListener('click', function(){
+    st.best = 0; saveBest(0); els.best.textContent = '0';
+    els.tip.className = 'g-tip';
+    els.tip.textContent = '最高分已清除，重新开始记录。';
+  });
+
+  els.bins.addEventListener('click', function(e){
+    var btn = e.target.closest('.bin');
+    if(btn) answer(btn.getAttribute('data-bin'));
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(!st.running) return;
+    var idx = ['1','2','3','4'].indexOf(e.key);
+    if(idx > -1){ e.preventDefault(); answer(BIN_ORDER[idx]); }
+  });
+
+  // 切换到其他小游戏时结束本局，避免计时器在后台空转
+  window.__stopSort = function(){
+    if(!st.running) return;
+    st.running = false;
+    st.gen++;
+    clearInterval(st.timer);
+    els.start.disabled = false;
+    els.start.textContent = '开始挑战';
+    els.time.textContent = '60';
+    els.time.classList.remove('warn');
+    els.progress.style.width = '100%';
+    els.tip.className = 'g-tip';
+    els.tip.textContent = '已切换到其他游戏，回来时可以重新开始。';
+  };
+})();
+
+/* ===== 游戏切换 / 物种记忆 / 环保问答 / 低碳一天 ===== */
+(function(){
+  'use strict';
+
+  function shuffle(arr){
+    for(var i = arr.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+  }
+  function readInt(key){
+    try{
+      var v = localStorage.getItem(key);
+      if(v === null) return -1;
+      v = parseInt(v, 10);
+      return isNaN(v) ? -1 : v;
+    }catch(e){ return -1; }
+  }
+  function readFloat(key){
+    try{
+      var v = localStorage.getItem(key);
+      if(v === null) return -1;
+      v = parseFloat(v);
+      return isNaN(v) ? -1 : v;
+    }catch(e){ return -1; }
+  }
+  function write(key, val){
+    try{ localStorage.setItem(key, String(val)); }catch(e){}
+  }
+  function drop(key){
+    try{ localStorage.removeItem(key); }catch(e){}
+  }
+  function fmtTime(s){
+    if(s < 60) return s + 's';
+    return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  }
+
+  /* ---- 标签切换 ---- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.game-tab'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.game-panel'));
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var name = tab.getAttribute('data-game');
+      tabs.forEach(function(t){
+        var on = t === tab;
+        t.classList.toggle('active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      panels.forEach(function(p){
+        p.classList.toggle('active', p.getAttribute('data-panel') === name);
+      });
+      if(name !== 'sort' && window.__stopSort) window.__stopSort();
+      if(name !== 'memory' && window.__stopMemory) window.__stopMemory();
+    });
+  });
+
+  /* ---- 02 物种记忆 ---- */
+  var SPECIES = [
+    {ico:'🐼', name:'大熊猫', fact:'国家一级保护动物，主要生活在四川、陕西、甘肃的竹林里。'},
+    {ico:'🦌', name:'麋鹿', fact:'中国特有的鹿科动物，曾一度在野外消失，后来重新引入。'},
+    {ico:'🐸', name:'虎纹蛙', fact:'国家二级保护动物，稻田和湿地是它最重要的家。'},
+    {ico:'🐟', name:'中华鲟', fact:'洄游性鱼类，被称为“水中大熊猫”。'},
+    {ico:'🌸', name:'珙桐', fact:'被称为“植物活化石”，开花时像一群停在枝头的白鸽。'},
+    {ico:'🦅', name:'金雕', fact:'大型猛禽，喜欢在开阔山地和悬崖附近活动。'}
+  ];
+  SPECIES.forEach(function(s, i){ s.id = i; });
+
+  var MEM_KEY = 'lvyuan_memory_best';
+  var mEls = {
+    grid: document.getElementById('mGrid'),
+    matched: document.getElementById('mMatched'),
+    moves: document.getElementById('mMoves'),
+    time: document.getElementById('mTime'),
+    best: document.getElementById('mBest'),
+    start: document.getElementById('mStart'),
+    resetBest: document.getElementById('mResetBest'),
+    tip: document.getElementById('mTip')
+  };
+
+  if(mEls.grid){
+    var mem = {deck:[], flipped:[], lock:true, running:false, matched:0, moves:0, seconds:0, timer:null, gen:0};
+    var savedMemBest = readInt(MEM_KEY);
+    if(savedMemBest >= 0) mEls.best.textContent = savedMemBest;
+
+    function buildMemory(){
+      mem.deck = shuffle(SPECIES.concat(SPECIES));
+      var html = '';
+      mem.deck.forEach(function(s){
+        html += '<button class="mem-card" type="button" data-id="' + s.id + '" aria-label="未翻开的卡片">' +
+          '<div class="mem-inner">' +
+            '<div class="mem-face mem-back"><span>🍃</span></div>' +
+            '<div class="mem-face mem-front"><span class="ico">' + s.ico + '</span><span class="nm">' + s.name + '</span></div>' +
+          '</div></button>';
+      });
+      mEls.grid.className = 'memory-grid';
+      mEls.grid.innerHTML = html;
+    }
+
+    function memRank(n){
+      if(n <= 9) return '🏆 过目不忘';
+      if(n <= 13) return '🌿 观察入微';
+      if(n <= 18) return '🌱 渐入佳境';
+      return '🍃 再记一遍';
+    }
+    function memTick(){
+      mem.seconds++;
+      mEls.time.textContent = fmtTime(mem.seconds);
+    }
+    function finishMemory(){
+      mem.running = false;
+      mem.lock = true;
+      mem.gen++;
+      clearInterval(mem.timer);
+      mem.timer = null;
+      mEls.start.textContent = '再来一局';
+      var previous = readInt(MEM_KEY);
+      var isNew = previous < 0 || mem.moves < previous;
+      var bestNow = previous;
+      if(isNew){
+        write(MEM_KEY, mem.moves);
+        bestNow = mem.moves;
+        mEls.best.textContent = mem.moves;
+      }
+      mEls.grid.className = 'memory-grid result';
+      mEls.grid.innerHTML = '<div class="g-result"><span class="big">' + mem.moves + ' 步</span>' +
+        '<span class="rank">' + memRank(mem.moves) + '</span>用时 ' + fmtTime(mem.seconds) +
+        ' · ' + (isNew ? '🎉 刷新了最佳步数！' : '最佳 ' + bestNow + ' 步') + '</div>';
+      mEls.tip.className = 'g-tip';
+      mEls.tip.textContent = '六个物种都找齐了。点「再来一局」，试试用更少的步数完成。';
+    }
+    function flipCard(card){
+      if(!mem.running || mem.lock) return;
+      if(card.classList.contains('flipped') || card.classList.contains('matched')) return;
+      card.classList.add('flipped');
+      mem.flipped.push(card);
+      if(mem.flipped.length < 2) return;
+
+      mem.moves++;
+      mEls.moves.textContent = mem.moves;
+      var a = mem.flipped[0], b = mem.flipped[1];
+      var gen = mem.gen;
+
+      if(a.getAttribute('data-id') === b.getAttribute('data-id')){
+        mem.lock = true;
+        var sp = SPECIES[parseInt(a.getAttribute('data-id'), 10)];
+        setTimeout(function(){
+          if(gen !== mem.gen || !mem.running) return;
+          a.classList.add('matched'); b.classList.add('matched');
+          a.classList.remove('flipped'); b.classList.remove('flipped');
+          a.setAttribute('aria-label', sp.name + '，已配对');
+          b.setAttribute('aria-label', sp.name + '，已配对');
+          mem.matched++;
+          mEls.matched.textContent = mem.matched + ' / 6';
+          mEls.tip.className = 'g-tip ok';
+          mEls.tip.textContent = '✅ ' + sp.name + '：' + sp.fact;
+          mem.flipped = [];
+          mem.lock = false;
+          if(mem.matched === 6) finishMemory();
+        }, 340);
+      }else{
+        mem.lock = true;
+        setTimeout(function(){
+          if(gen !== mem.gen || !mem.running) return;
+          a.classList.remove('flipped'); b.classList.remove('flipped');
+          mem.flipped = [];
+          mem.lock = false;
+        }, 780);
+      }
+    }
+    function startMemory(){
+      clearInterval(mem.timer);
+      mem.gen++;
+      mem.running = true;
+      mem.lock = false;
+      mem.matched = 0;
+      mem.moves = 0;
+      mem.seconds = 0;
+      mem.flipped = [];
+      buildMemory();
+      mEls.matched.textContent = '0 / 6';
+      mEls.moves.textContent = '0';
+      mEls.time.textContent = '0s';
+      mEls.tip.className = 'g-tip';
+      mEls.tip.textContent = '翻开两张相同的卡片，把六个物种找出来。';
+      mEls.start.textContent = '重新开始';
+      mem.timer = setInterval(memTick, 1000);
+    }
+
+    window.__stopMemory = function(){
+      if(mem.timer){ clearInterval(mem.timer); mem.timer = null; }
+      if(mem.running){
+        mem.running = false;
+        mem.lock = true;
+        mem.gen++;
+        mEls.start.textContent = '开始翻牌';
+        mEls.tip.className = 'g-tip';
+        mEls.tip.textContent = '已切换到其他游戏，回来时点「开始翻牌」重新开局。';
+      }
+    };
+
+    mEls.grid.addEventListener('click', function(e){
+      var card = e.target.closest('.mem-card');
+      if(card) flipCard(card);
+    });
+    mEls.start.addEventListener('click', startMemory);
+    mEls.resetBest.addEventListener('click', function(){
+      drop(MEM_KEY);
+      mEls.best.textContent = '--';
+      mEls.tip.className = 'g-tip';
+      mEls.tip.textContent = '最佳步数已清除。';
+    });
+
+    buildMemory();
+  }
+
+  /* ---- 03 环保问答 ---- */
+  var QUIZ_KEY = 'lvyuan_quiz_best';
+  var QUESTIONS = [
+    {q:'世界环境日是哪一天？', opts:['4 月 22 日','5 月 22 日','6 月 5 日','3 月 12 日'], a:2, exp:'6 月 5 日是世界环境日；4 月 22 日是世界地球日。'},
+    {q:'世界湿地日是哪一天？', opts:['2 月 2 日','3 月 22 日','6 月 8 日','9 月 16 日'], a:0, exp:'每年 2 月 2 日是世界湿地日，湿地也被称为“地球之肾”。'},
+    {q:'大熊猫的主要食物是什么？', opts:['竹子','鱼','昆虫','坚果'], a:0, exp:'大熊猫的食物 99% 以上是竹子，所以保护竹林就是保护它们。'},
+    {q:'湿地通常被称为什么？', opts:['地球之肺','地球之肾','地球之心','地球之眼'], a:1, exp:'湿地能蓄水、净水、调蓄洪水，因此被称为“地球之肾”；“地球之肺”通常指森林。'},
+    {q:'湖南著名的“千年鸟道”主要位于哪条山脉？', opts:['南岭','武陵山脉','罗霄山脉','雪峰山脉'], a:2, exp:'罗霄山脉一带的桂东、炎陵等地，是候鸟迁徙的重要通道。'},
+    {q:'以下哪种垃圾属于有害垃圾？', opts:['香蕉皮','过期药品','旧报纸','打碎的陶瓷碗'], a:1, exp:'过期药品含有药物成分，随意丢弃会污染土壤和水源，应投入有害垃圾桶。'},
+    {q:'普通塑料塑料袋在自然环境中完全降解，大约需要多久？', opts:['1 年左右','5 年左右','20 年左右','200 年以上'], a:3, exp:'普通塑料在自然环境中极难降解，可能存留数百年，所以自带购物袋很有意义。'},
+    {q:'中国的植树节是哪一天？', opts:['3 月 12 日','4 月 5 日','5 月 1 日','6 月 5 日'], a:0, exp:'每年 3 月 12 日是植树节，正是春天适合种树的时节。'},
+    {q:'“生物多样性”指的是什么？', opts:['只有动物种类多','只有植物种类多','所有生物及其生态系统的多样性','森林面积足够大'], a:2, exp:'生物多样性包括物种多样性、基因多样性和生态系统多样性，不只是动物或植物。'},
+    {q:'候鸟迁徙途中，最需要保护的是什么？', opts:['城市高楼','停歇地和迁徙通道','农田','鱼塘'], a:1, exp:'候鸟迁徙依赖沿途的停歇地补给，破坏这些节点会让整个迁徙失败。'},
+    {q:'以下哪一项不属于厨余垃圾？', opts:['剩饭剩菜','果皮','鸡蛋壳','用过的纸巾'], a:3, exp:'用过的纸巾被污染、难以回收，属于其他垃圾；果皮、蛋壳和剩饭属于厨余垃圾。'},
+    {q:'以下哪种做法最省水？', opts:['用淘米水浇花','长时间淋浴','刷牙时一直开着水龙头','用流水解冻食物'], a:0, exp:'淘米水可以二次利用来浇花，一水多用是最直接的节水方式。'},
+    {q:'在中国，每消耗 1 度电大约会排放多少二氧化碳？', opts:['约 0.06 千克','约 0.6 千克','约 6 千克','约 60 千克'], a:1, exp:'按近年电网平均排放因子估算，1 度电约排放 0.6 千克二氧化碳，所以随手关灯很实在。'},
+    {q:'以下哪种出行方式碳排放最低？', opts:['独自开燃油车','打车','步行或骑行','乘飞机'], a:2, exp:'短途步行或骑行几乎不产生碳排放，还能顺便锻炼身体。'}
+  ];
+  var qEls = {
+    index: document.getElementById('qIndex'),
+    score: document.getElementById('qScore'),
+    best: document.getElementById('qBest'),
+    question: document.getElementById('qQuestion'),
+    options: document.getElementById('qOptions'),
+    tip: document.getElementById('qTip'),
+    start: document.getElementById('qStart'),
+    next: document.getElementById('qNext'),
+    resetBest: document.getElementById('qResetBest')
+  };
+
+  if(qEls.start){
+    var quizBest = readInt(QUIZ_KEY);
+    if(quizBest >= 0) qEls.best.textContent = quizBest + ' / 5';
+    var qst = {pool:[], idx:0, score:0, answered:false, active:false};
+
+    function quizRank(n){
+      if(n === 5) return '🏆 自然通';
+      if(n === 4) return '🌿 绿色学霸';
+      if(n === 3) return '🌱 基础不错';
+      return '📚 再读一读';
+    }
+    function renderQuestion(){
+      var q = qst.pool[qst.idx];
+      qEls.index.textContent = (qst.idx + 1) + ' / 5';
+      qEls.score.textContent = qst.score;
+      qEls.question.textContent = q.q;
+      qEls.options.innerHTML = '';
+      q.opts.forEach(function(text, i){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'quiz-opt';
+        b.textContent = String.fromCharCode(65 + i) + '. ' + text;
+        b.addEventListener('click', function(){ answerQuiz(i, b); });
+        qEls.options.appendChild(b);
+      });
+      qEls.tip.className = 'g-tip';
+      qEls.tip.textContent = '选出你认为正确的答案。';
+      qEls.next.hidden = true;
+      qst.answered = false;
+    }
+    function answerQuiz(i){
+      if(!qst.active || qst.answered) return;
+      qst.answered = true;
+      var q = qst.pool[qst.idx];
+      var buttons = qEls.options.querySelectorAll('.quiz-opt');
+      buttons.forEach(function(b, bi){
+        b.disabled = true;
+        if(bi === q.a) b.classList.add('ok');
+        else if(bi === i) b.classList.add('no');
+      });
+      if(i === q.a){
+        qst.score++;
+        qEls.tip.className = 'g-tip ok';
+        qEls.tip.textContent = '✅ 答对了。' + q.exp;
+      }else{
+        qEls.tip.className = 'g-tip bad';
+        qEls.tip.textContent = '❌ 正确答案是 ' + String.fromCharCode(65 + q.a) + '。' + q.exp;
+      }
+      qEls.score.textContent = qst.score;
+      qEls.next.hidden = false;
+      qEls.next.textContent = qst.idx === 4 ? '看结果' : '下一题';
+    }
+    function startQuiz(){
+      qst.pool = shuffle(QUESTIONS.slice()).slice(0, 5);
+      qst.idx = 0;
+      qst.score = 0;
+      qst.answered = false;
+      qst.active = true;
+      qEls.start.hidden = true;
+      qEls.next.hidden = true;
+      renderQuestion();
+    }
+    function nextQuiz(){
+      if(!qst.active) return;
+      if(qst.idx < 4){
+        qst.idx++;
+        renderQuestion();
+      }else{
+        finishQuiz();
+      }
+    }
+    function finishQuiz(){
+      qst.active = false;
+      qEls.next.hidden = true;
+      qEls.start.hidden = false;
+      qEls.start.textContent = '再来一局';
+      qEls.index.textContent = '5 / 5';
+      var previous = readInt(QUIZ_KEY);
+      var isNew = previous < 0 || qst.score > previous;
+      var bestNow = previous;
+      if(isNew){
+        write(QUIZ_KEY, qst.score);
+        bestNow = qst.score;
+        qEls.best.textContent = qst.score + ' / 5';
+      }
+      qEls.question.textContent = '本局结束';
+      qEls.options.innerHTML = '<div class="g-result"><span class="big">' + qst.score + ' / 5</span>' +
+        '<span class="rank">' + quizRank(qst.score) + '</span>' +
+        (isNew ? '🎉 刷新了最佳成绩！' : '最佳 ' + bestNow + ' / 5') + '</div>';
+      qEls.tip.className = 'g-tip';
+      qEls.tip.textContent = '想换一批题？点「再来一局」，每次都会重新随机抽取。';
+    }
+
+    qEls.start.addEventListener('click', startQuiz);
+    qEls.next.addEventListener('click', nextQuiz);
+    qEls.resetBest.addEventListener('click', function(){
+      drop(QUIZ_KEY);
+      qEls.best.textContent = '--';
+      qEls.tip.className = 'g-tip';
+      qEls.tip.textContent = '最佳成绩已清除。';
+    });
+  }
+
+  /* ---- 04 低碳一天 ---- */
+  var CARBON_KEY = 'lvyuan_carbon_best';
+  var SCENES = [
+    {ico:'🌅', title:'早餐', desc:'新的一天，从第一口开始。', opts:[
+      {label:'燕麦粥 + 本地当季水果', co2:0.3, note:'本地当季食材，运输和储存的碳排都更低。'},
+      {label:'包子 + 豆浆，堂食', co2:0.5, note:'植物性早餐碳排不高，堂食还能少用一个打包盒。'},
+      {label:'牛肉汉堡 + 进口咖啡', co2:3.2, note:'牛肉和长途运输的咖啡，是这一餐碳排的大头。'}
+    ]},
+    {ico:'🚲', title:'通勤', desc:'从宿舍到教室，或者从家到公司。', opts:[
+      {label:'步行或骑行', co2:0, note:'零碳出行，还能顺便看看路边的树。'},
+      {label:'公交或地铁', co2:0.2, note:'公共交通把碳排分摊到很多人身上，效率高得多。'},
+      {label:'独自开燃油车', co2:2.4, note:'一个人一辆车，碳排几乎全部由你承担。'}
+    ]},
+    {ico:'🍱', title:'午餐', desc:'忙了一上午，午餐怎么解决？', opts:[
+      {label:'食堂素菜套餐', co2:0.6, note:'植物性食材的碳排通常远低于肉类。'},
+      {label:'一荤两素，堂食', co2:1.1, note:'荤素搭配不错，堂食也避免了外卖包装。'},
+      {label:'外卖烧烤 + 一次性餐具', co2:2.8, note:'肉类、冷链配送和一次性餐具叠加在一起，碳排就上去了。'}
+    ]},
+    {ico:'🛍️', title:'购物', desc:'路过超市和快递站，你会怎么选？', opts:[
+      {label:'自带布袋，买本地蔬菜', co2:0.2, note:'少一个塑料袋、少一段运输，都是实打实的减排。'},
+      {label:'网购一件基础款衣服', co2:4.2, note:'一件衣服从生产到配送，碳排比想象中高，买之前先想想使用频率。'},
+      {label:'冲动下单三件，次日达', co2:9.5, note:'生产、包装、单独配送叠加，是购物环节里碳排最高的一种。'}
+    ]},
+    {ico:'🌙', title:'晚上', desc:'一天结束，怎么给今天收尾？', opts:[
+      {label:'关灯早睡，手机定时断电', co2:0.1, note:'最轻的夜晚，也最省钱。'},
+      {label:'空调 26℃，开两小时', co2:0.8, note:'26℃ 是舒适与省电之间比较平衡的设置。'},
+      {label:'空调 18℃ 整夜 + 游戏主机', co2:3.5, note:'温度越低越费电，通宵运行会让碳排悄悄累积。'}
+    ]}
+  ];
+  var cEls = {
+    step: document.getElementById('cStep'),
+    total: document.getElementById('cTotal'),
+    best: document.getElementById('cBest'),
+    scene: document.getElementById('cScene'),
+    tip: document.getElementById('cTip'),
+    start: document.getElementById('cStart'),
+    next: document.getElementById('cNext'),
+    resetBest: document.getElementById('cResetBest')
+  };
+
+  if(cEls.start){
+    var carbonBest = readFloat(CARBON_KEY);
+    if(carbonBest >= 0) cEls.best.textContent = carbonBest.toFixed(1) + ' kg';
+    var cst = {idx:0, total:0, choices:[], locked:true, running:false};
+
+    function carbonLevel(t){
+      if(t <= 2.5) return {name:'🌱 低碳生活家', line:'你的一天很轻，几乎没给地球添负担。'};
+      if(t <= 5) return {name:'🌿 绿色行动派', line:'大部分选择都很友好，再优化一两项就更好了。'};
+      if(t <= 9) return {name:'🌤 还有进步空间', line:'一些看似方便的选择，碳排其实不低。'};
+      return {name:'🔥 碳排放大户', line:'别灰心，从下一餐、下一趟路开始改变就好。'};
+    }
+    function renderScene(){
+      var s = SCENES[cst.idx];
+      cEls.step.textContent = (cst.idx + 1) + ' / 5';
+      cEls.total.textContent = cst.total.toFixed(1) + ' kg';
+      cEls.scene.className = 'carbon-box';
+      cEls.scene.innerHTML = '<div class="scene-ico">' + s.ico + '</div><h4>' + s.title + '</h4><p>' + s.desc + '</p><div class="carbon-opts" id="cOpts"></div>';
+      var wrap = document.getElementById('cOpts');
+      s.opts.forEach(function(o, i){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'carbon-opt';
+        var label = document.createElement('span');
+        label.className = 'label';
+        label.textContent = o.label;
+        var co2 = document.createElement('span');
+        co2.className = 'co2';
+        co2.textContent = '?';
+        b.appendChild(label);
+        b.appendChild(co2);
+        b.addEventListener('click', function(){ chooseCarbon(i, b); });
+        wrap.appendChild(b);
+      });
+      cEls.tip.className = 'g-tip';
+      cEls.tip.textContent = '选一个最接近你日常的选项。';
+      cEls.next.hidden = true;
+      cst.locked = false;
+    }
+    function chooseCarbon(i, btn){
+      if(!cst.running || cst.locked) return;
+      cst.locked = true;
+      var s = SCENES[cst.idx], pick = s.opts[i];
+      cst.total += pick.co2;
+      cst.choices.push(i);
+      cEls.total.textContent = cst.total.toFixed(1) + ' kg';
+
+      var low = 0;
+      s.opts.forEach(function(o, oi){ if(o.co2 < s.opts[low].co2) low = oi; });
+      var buttons = cEls.scene.querySelectorAll('.carbon-opt');
+      buttons.forEach(function(b, bi){
+        b.disabled = true;
+        b.querySelector('.co2').textContent = s.opts[bi].co2.toFixed(1) + ' kg';
+      });
+      btn.classList.add('picked');
+      if(low !== i) buttons[low].classList.add('best');
+
+      var isLow = i === low;
+      cEls.tip.className = 'g-tip' + (isLow ? ' ok' : '');
+      cEls.tip.textContent = (isLow ? '🌿 这是这一站最低碳的选择。' : '这一项约 ' + pick.co2.toFixed(1) + ' kg CO₂e。') + pick.note;
+      cEls.next.hidden = false;
+      cEls.next.textContent = cst.idx === 4 ? '看看今天' : '下一站';
+    }
+    function startCarbon(){
+      cst.idx = 0;
+      cst.total = 0;
+      cst.choices = [];
+      cst.locked = false;
+      cst.running = true;
+      cEls.start.hidden = true;
+      cEls.next.hidden = true;
+      renderScene();
+    }
+    function nextCarbon(){
+      if(!cst.running) return;
+      if(cst.idx < 4){
+        cst.idx++;
+        renderScene();
+      }else{
+        finishCarbon();
+      }
+    }
+    function finishCarbon(){
+      cst.running = false;
+      cst.locked = true;
+      cEls.next.hidden = true;
+      cEls.start.hidden = false;
+      cEls.start.textContent = '再过一天';
+      cEls.step.textContent = '5 / 5';
+      var lv = carbonLevel(cst.total);
+      var previous = readFloat(CARBON_KEY);
+      var isNew = previous < 0 || cst.total < previous;
+      var bestNow = previous;
+      if(isNew){
+        write(CARBON_KEY, cst.total.toFixed(1));
+        bestNow = cst.total;
+        cEls.best.textContent = cst.total.toFixed(1) + ' kg';
+      }
+      cEls.scene.className = 'carbon-box';
+      cEls.scene.innerHTML = '<div class="g-result"><span class="big">' + cst.total.toFixed(1) + ' kg</span>' +
+        '<span class="rank">' + lv.name + '</span>' + lv.line +
+        '<br><span class="carbon-compare">' + (isNew ? '🎉 刷新了最低纪录！' : '最低纪录 ' + bestNow.toFixed(1) + ' kg') + '</span></div>';
+
+      var tips = [];
+      if(cst.choices[0] === 2) tips.push('早餐少一次牛肉和进口咖啡，就能省下不少碳。');
+      if(cst.choices[1] >= 2) tips.push('短途出行试试公交、骑行或拼车。');
+      if(cst.choices[2] === 2) tips.push('多选植物性餐食，少一次外卖就少一份包装。');
+      if(cst.choices[3] >= 1) tips.push('买之前先问自己：是真的需要，还是一时冲动？');
+      if(cst.choices[4] === 2) tips.push('空调调到 26℃，睡前定时，能省下不少电。');
+      if(!tips.length) tips.push('这一天已经很轻了，试试把这份习惯坚持一周。');
+      cEls.tip.className = 'g-tip';
+      cEls.tip.innerHTML = '<strong>小建议</strong>　' + tips.join(' ');
+    }
+
+    cEls.start.addEventListener('click', startCarbon);
+    cEls.next.addEventListener('click', nextCarbon);
+    cEls.resetBest.addEventListener('click', function(){
+      drop(CARBON_KEY);
+      cEls.best.textContent = '--';
+      cEls.tip.className = 'g-tip';
+      cEls.tip.textContent = '最低纪录已清除。';
+    });
+  }
+})();
+
+/* ===== 滚动进度条 / 返回顶部 / 导航高亮 ===== */
+(function(){
+  var bar = document.getElementById('scrollProgress');
+  var toTop = document.getElementById('toTop');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+  var rails = Array.prototype.slice.call(document.querySelectorAll('.edge-rail, .edge-coord, .side-mascot'));
+
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    if(bar) bar.style.width = (h > 0 ? (y / h * 100) : 0) + '%';
+    if(toTop) toTop.classList.toggle('show', y > 600);
+    rails.forEach(function(el){
+      el.classList.toggle('show', y > window.innerHeight * 0.65);
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  if(toTop){
+    toTop.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+
+  var sections = links.map(function(a){
+    return document.querySelector(a.getAttribute('href'));
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var i = sections.indexOf(en.target);
+      if(i < 0) return;
+      links.forEach(function(a){ a.classList.remove('active'); });
+      links[i].classList.add('active');
+    });
+  }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+  sections.forEach(function(s){ if(s) io.observe(s); });
+})();
+</script>
+
+<script>
+/* ===== 环保习惯打卡 ===== */
+(function(){
+  var list = document.getElementById('habitList');
+  if(!list) return;
+  var rows = Array.prototype.slice.call(list.querySelectorAll('.habit-row'));
+  var countEl = document.getElementById('habitCount');
+  var barEl = document.getElementById('habitBar');
+  var resetBtn = document.getElementById('habitReset');
+
+  function storageKey(){
+    var d = new Date();
+    return 'lvyuan_habits_' + d.getFullYear() + '-' +
+      String(d.getMonth() + 1).padStart(2, '0') + '-' +
+      String(d.getDate()).padStart(2, '0');
+  }
+  function read(){
+    try{
+      var raw = localStorage.getItem(storageKey());
+      if(!raw) return [];
+      var arr = JSON.parse(raw);
+      return Array.isArray(arr) ? arr : [];
+    }catch(e){ return []; }
+  }
+  function save(arr){
+    try{ localStorage.setItem(storageKey(), JSON.stringify(arr)); }catch(e){}
+  }
+  function render(){
+    var done = {}, n = 0;
+    read().forEach(function(id){ done[id] = true; });
+    rows.forEach(function(row){
+      var on = !!done[row.getAttribute('data-habit')];
+      row.classList.toggle('done', on);
+      row.setAttribute('aria-pressed', on ? 'true' : 'false');
+      row.querySelector('.habit-state').textContent = on ? '已做到' : '打卡';
+      if(on) n++;
+    });
+    countEl.textContent = n === rows.length
+      ? '今日 ' + rows.length + ' / ' + rows.length + ' · 满分'
+      : '今日 ' + n + ' / ' + rows.length;
+    barEl.style.width = (n / rows.length * 100) + '%';
+    barEl.classList.toggle('full', n === rows.length);
+  }
+
+  list.addEventListener('click', function(e){
+    var row = e.target.closest('.habit-row');
+    if(!row) return;
+    var arr = read();
+    var id = row.getAttribute('data-habit');
+    var i = arr.indexOf(id);
+    if(i > -1) arr.splice(i, 1); else arr.push(id);
+    save(arr);
+    render();
+  });
+  resetBtn.addEventListener('click', function(){
+    save([]);
+    render();
+  });
+  render();
+})();
+</script>
+
+<script>
+/* ===== 两侧角色互动 ===== */
+(function(){
+  var mascots = Array.prototype.slice.call(document.querySelectorAll('.side-mascot'));
+  if(!mascots.length) return;
+  var tips = {
+    left: [
+      '离开教室记得关灯，一个人也能省下一度电。',
+      '充电器拔掉再出门，待机状态也在偷偷耗电。',
+      '短途试试走路或骑车，零排放，还能顺便看看树。',
+      '打印前想一想，双面用纸能少砍很多树。',
+      '空调调高一度，夏天也能过得很舒服。',
+      '喝完的饮料瓶压扁再丢，回收车能多装一些。'
+    ],
+    right: [
+      '外卖备注“不要餐具”，少一份塑料就多一分干净。',
+      '洗完手把水龙头关紧，一滴水也值得认真。',
+      '随身带水杯，拒绝一次性的方便。',
+      '把旧书传给下一届，知识比纸更长久。',
+      '购物袋折好放包里，下次出门就不用再买。',
+      '看到地上的垃圾顺手捡起，湿地会记得你的好。'
+    ]
+  };
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  mascots.forEach(function(m){
+    var isLeft = m.classList.contains('mascot-left');
+    var pool = tips[isLeft ? 'left' : 'right'];
+    var bubble = m.querySelector('.mascot-bubble');
+    var svg = m.querySelector('svg');
+    var irises = Array.prototype.slice.call(m.querySelectorAll('.m-iris'));
+    var last = -1, hideTimer = null, reactTimer = null;
+
+    function talk(){
+      mascots.forEach(function(other){
+        if(other !== m) other.classList.remove('talking', 'react');
+      });
+      var i = Math.floor(Math.random() * pool.length);
+      if(pool.length > 1 && i === last){
+        i = (i + 1 + Math.floor(Math.random() * (pool.length - 1))) % pool.length;
+      }
+      last = i;
+      bubble.innerHTML = '<b>' + (isLeft ? '闪电少年' : '地球女孩') + '</b>' + pool[i];
+      m.classList.remove('react');
+      void m.offsetWidth;
+      m.classList.add('talking', 'react', 'talked');
+      clearTimeout(hideTimer);
+      clearTimeout(reactTimer);
+      hideTimer = setTimeout(function(){ m.classList.remove('talking'); }, 4200);
+      reactTimer = setTimeout(function(){ m.classList.remove('react'); }, 720);
+    }
+    m.addEventListener('click', talk);
+
+    if(!reduce && fine){
+      var raf = null;
+      document.addEventListener('pointermove', function(e){
+        if(raf) return;
+        raf = requestAnimationFrame(function(){
+          raf = null;
+          var r = svg.getBoundingClientRect();
+          if(!r.width) return;
+          var scale = r.width / 180;
+          var cx = r.left + 90 * scale;
+          var cy = r.top + 101 * scale;
+          var dx = e.clientX - cx, dy = e.clientY - cy;
+          if(Math.abs(dx) > 360) dx = 0;
+          if(Math.abs(dy) > 300) dy = 0;
+          var mx = Math.max(-1, Math.min(1, dx / 120)) * 3.2;
+          var my = Math.max(-1, Math.min(1, dy / 100)) * 2.6;
+          irises.forEach(function(el){
+            el.style.transform = 'translate(' + mx.toFixed(2) + 'px,' + my.toFixed(2) + 'px)';
+          });
+        });
+      }, {passive:true});
+    }
+
+    if(!reduce){
+      (function blink(){
+        setTimeout(function(){
+          m.classList.add('blink');
+          setTimeout(function(){ m.classList.remove('blink'); }, 130);
+          blink();
+        }, 2800 + Math.random() * 3600);
+      })();
+    }
+  });
+})();
+</script>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="关闭大图">×</button>
+  <img id="lightboxImg" alt="">
+</div>
+
+<script>
+/* ===== 图片灯箱 ===== */
+(function(){
+  var box = document.getElementById('lightbox');
+  var boxImg = document.getElementById('lightboxImg');
+  var closeBtn = document.getElementById('lightboxClose');
+  if(!box || !boxImg) return;
+  var lastImg = null;
+
+  function open(img){
+    lastImg = img;
+    boxImg.src = img.src;
+    boxImg.alt = img.alt || '';
+    box.classList.add('open');
+    box.setAttribute('aria-hidden','false');
+    document.body.classList.add('locked');
+    closeBtn.focus();
+  }
+  function close(){
+    box.classList.remove('open');
+    box.setAttribute('aria-hidden','true');
+    document.body.classList.remove('locked');
+    boxImg.src = '';
+    if(lastImg) lastImg.focus();
+  }
+
+  document.querySelectorAll('.photo-card img, .asset-card img').forEach(function(img){
+    img.setAttribute('tabindex','0');
+    img.setAttribute('role','button');
+    img.addEventListener('click', function(){ open(img); });
+    img.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(img); }
+    });
+  });
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', function(e){ if(e.target === box) close(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && box.classList.contains('open')) close();
+  });
+})();
+</script>
+
 </body>
 </html>
